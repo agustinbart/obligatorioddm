@@ -5,28 +5,28 @@ import MyText from "../../components/Text";
 import DatabaseConnection from "../../database/database-connection";
 const db = DatabaseConnection.getConnection();
 
-const ViewAllUsers = ({navigation}) => {
-  const [users, setUsers] = useState([]);
+const ViewAllCars = ({navigation}) => {
+  const [cars, setCars] = useState([]);
 
   // ejecutar cuando la vista se cree
   useEffect(() => {
     db.transaction((tx) => {
-      tx.executeSql(`SELECT * FROM users`, [], (tx, results) => {
+      tx.executeSql(`SELECT * FROM cars`, [], (tx, results) => {
         console.log("results", results);
         // validar resultado
         if (results.rows.length > 0) {
           var temp = [];
           for (let i = 0; i < results.rows.length; ++i)
             temp.push(results.rows.item(i));
-          setUsers(temp);
+          setCars(temp);
         } else {
           Alert.alert(
             "Mensaje",
-            "No hay usuarios!!!",
+            "No hay autos!",
             [
               {
                 text: "Ok",
-                onPress: () => navigation.navigate("UserHomeScreen"),
+                onPress: () => navigation.navigate("CarHomeScreen"),
               },
             ],
             { cancelable: false }
@@ -39,29 +39,29 @@ const ViewAllUsers = ({navigation}) => {
   const listItemView = (item) => {
     return (
       <View key={item.id} style={styles.listItemView}>
-        <MyText text={item.nombre} style={styles.text}/>
-        <MyText text={item.apellido} style={styles.text}/>
-        <MyText text={item.cedula} style={styles.text}/>
         <MyText text={item.matricula} style={styles.text}/>
+        <MyText text={item.marca} style={styles.text}/>
+        <MyText text={item.color} style={styles.text}/>
+        <MyText text={item.motorserial} style={styles.text}/>
       </View>
     );
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      <View>
+        <View>
           <FlatList
             contentContainerStyle={{ paddingHorizontal: 20 }}
-            data={users}
+            data={cars}
             key={(index) => index.toString()}
             renderItem={({ item }) => listItemView(item)}
           />
-      </View>
+        </View>
     </SafeAreaView>
   );
 };
 
-export default ViewAllUsers;
+export default ViewAllCars;
 
 const styles = StyleSheet.create({
   container: {

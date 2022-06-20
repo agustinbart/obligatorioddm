@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome'
+import Icon from 'react-native-vector-icons/FontAwesome5'
 
 const MyButton = (props) => {
   return (
@@ -13,7 +13,7 @@ const MyButton = (props) => {
   )
 }
 
-export default MyButton
+export default MyButton;
 
 const styles = StyleSheet.create({
     view: {

@@ -14,31 +14,31 @@ import MySingleButton from "../../components/SingleButton";
 import DatabaseConnection from "../../database/database-connection";
 const db = DatabaseConnection.getConnection();
 
-const ViewUser = ({ navigation }) => {
-  const [cedula, setCedula] = useState("");
-  const [userData, setUserData] = useState(null);
+const ViewCar = ({ navigation }) => {
+  const [matricula, setMatricula] = useState("");
+  const [carData, setCarData] = useState(null);
 
   // generar funcion para obtener datos del usuario
-  const getUserData = () => {
-    console.log("getUserData");
-    setUserData({});
+  const getCarData = () => {
+    console.log("getCarData");
+    setCarData({});
 
-    if (!cedula.trim()) {
-      Alert.alert("La cédula es requerida");
+    if (!matricula.trim()) {
+      Alert.alert("La matricula es requerida");
       return;
     }
 
     db.transaction((tx) => {
       tx.executeSql(
-        `SELECT * FROM users WHERE cedula = ?`,
-        [cedula],
+        `SELECT * FROM cars WHERE matricula = ?`,
+        [matricula],
         (tx, results) => {
           console.log("results", results);
           // validar resultado
           if (results.rows.length > 0) {
-            setUserData(results.rows.item(0));
+            setCarData(results.rows.item(0));
           } else {
-            Alert.alert("El usuario no existe");
+            Alert.alert("El auto no existe");
           }
         }
       );
@@ -51,15 +51,15 @@ const ViewUser = ({ navigation }) => {
         <View style={styles.generalView}>
           <ScrollView>
             <KeyboardAvoidingView style={styles.keyboardView}>
-              <MyText text="Filtro de usuario" style={styles.text}/>
+              <MyText text="Filtro de auto" style={styles.text}/>
               <MyInputText
                 style={styles.inputStyle}
-                placeholder="Cédula"
-                onChangeText={(text) => setCedula(text)}
+                placeholder="Matricula"
+                onChangeText={(text) => setMatricula(text)}
               />
-              <MySingleButton title="Buscar" customPress={getUserData} />
+              <MySingleButton title="Buscar" customPress={getCarData} />
               <View style={styles.presenterView}>
-                <MyText text={`${!userData ? '' : userData.matricula}`} style={styles.presenterText}/>
+                <MyText text={`${!carData ? '' : carData.marca}`} style={styles.presenterText}/>
               </View>
             </KeyboardAvoidingView>
           </ScrollView>
@@ -69,7 +69,7 @@ const ViewUser = ({ navigation }) => {
   );
 };
 
-export default ViewUser;
+export default ViewCar;
 
 const styles = StyleSheet.create({
   container: {

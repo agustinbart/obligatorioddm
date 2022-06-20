@@ -14,23 +14,23 @@ import MyText from "../../components/Text";
 import DatabaseConnection from "../../database/database-connection";
 const db = DatabaseConnection.getConnection();
 
-const DeleteUser = ({ navigation }) => {
-  const [cedula, setCedula] = useState("");
+const DeleteTreatment = ({ navigation }) => {
+  const [tratamiento_id, setTratamientoId] = useState(0);
 
-  const deleteUser = () => {
-    console.log("deleteUser");
+  const deleteTreatment = () => {
+    console.log("deleteTreatment");
     db.transaction((tx) => {
       tx.executeSql(
-        `DELETE FROM users WHERE cedula = ?`,
-        [cedula],
+        `DELETE FROM treatments WHERE tratamiento_id = ?`,
+        [tratamiento_id],
         (tx, results) => {
           console.log("results", results);
           // validar resultado
           if (results.rowsAffected > 0) {
-            Alert.alert("Usuario eliminado");
-            navigation.navigate("UserHomeScreen");
+            Alert.alert("Tratamiento eliminado");
+            navigation.navigate("TreatmentHomeScreen");
           } else {
-            Alert.alert("El usuario no existe");
+            Alert.alert("El tratamiento no existe");
           }
         }
       );
@@ -41,13 +41,13 @@ const DeleteUser = ({ navigation }) => {
       <View style={styles.viewContainer}>
         <View style={styles.generalView}>
           <ScrollView>
-          <MyText text="Busqueda de usuario" style={styles.text}/>
+          <MyText text="Busqueda de tratamiento" style={styles.text}/>
             <KeyboardAvoidingView style={styles.keyboardView}>
           <MyInputText
-            placeholder="Cédula"
-            onChangeText={(text) => setCedula(text)}
+            placeholder="Id"
+            onChangeText={(text) => setTratamientoId(text)}
           />
-          <MySingleButton title="Borrar Usuario" customPress={deleteUser} />
+          <MySingleButton title="Borrar Tratamiento" customPress={deleteTreatment} />
           </KeyboardAvoidingView>
           </ScrollView>
         </View>
@@ -56,7 +56,7 @@ const DeleteUser = ({ navigation }) => {
   );
 };
 
-export default DeleteUser;
+export default DeleteTreatment;
 
 const styles = StyleSheet.create({
   container: {

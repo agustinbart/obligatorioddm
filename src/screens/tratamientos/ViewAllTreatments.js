@@ -5,28 +5,28 @@ import MyText from "../../components/Text";
 import DatabaseConnection from "../../database/database-connection";
 const db = DatabaseConnection.getConnection();
 
-const ViewAllUsers = ({navigation}) => {
-  const [users, setUsers] = useState([]);
+const ViewAllTreatments = ({navigation}) => {
+  const [tratamientos, setTratamientos] = useState([]);
 
   // ejecutar cuando la vista se cree
   useEffect(() => {
     db.transaction((tx) => {
-      tx.executeSql(`SELECT * FROM users`, [], (tx, results) => {
+      tx.executeSql(`SELECT * FROM treatments`, [], (tx, results) => {
         console.log("results", results);
         // validar resultado
         if (results.rows.length > 0) {
           var temp = [];
           for (let i = 0; i < results.rows.length; ++i)
             temp.push(results.rows.item(i));
-          setUsers(temp);
+          setTratamientos(temp);
         } else {
           Alert.alert(
             "Mensaje",
-            "No hay usuarios!!!",
+            "No hay tratamientos!",
             [
               {
                 text: "Ok",
-                onPress: () => navigation.navigate("UserHomeScreen"),
+                onPress: () => navigation.navigate("TreatmentHomeScreen"),
               },
             ],
             { cancelable: false }
@@ -39,29 +39,31 @@ const ViewAllUsers = ({navigation}) => {
   const listItemView = (item) => {
     return (
       <View key={item.id} style={styles.listItemView}>
+        <MyText text={item.tratamiento_id} style={styles.text}/>
         <MyText text={item.nombre} style={styles.text}/>
-        <MyText text={item.apellido} style={styles.text}/>
-        <MyText text={item.cedula} style={styles.text}/>
-        <MyText text={item.matricula} style={styles.text}/>
+        <MyText text={item.auto} style={styles.text}/>
+        <MyText text={item.fecha_inicio} style={styles.text}/>
+        <MyText text={item.fecha_fin} style={styles.text}/>
+        <MyText text={item.costo} style={styles.text}/>
       </View>
     );
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      <View>
+        <View>
           <FlatList
             contentContainerStyle={{ paddingHorizontal: 20 }}
-            data={users}
+            data={tratamientos}
             key={(index) => index.toString()}
             renderItem={({ item }) => listItemView(item)}
           />
-      </View>
+        </View>
     </SafeAreaView>
   );
 };
 
-export default ViewAllUsers;
+export default ViewAllTreatments;
 
 const styles = StyleSheet.create({
   container: {

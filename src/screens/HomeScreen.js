@@ -31,7 +31,21 @@ const HomeScreen = ({ navigation }) => {
                 title="Tratamientos"
                 btnColor="red"
                 btnIcon="wrench"
-                customPress={() => navigation.navigate("CarHomeScreen")}
+                customPress={() => navigation.navigate("TreatmentHomeScreen")}
+              />
+
+              <MyButton
+                title="Insumos"
+                btnColor="blue"
+                btnIcon="oil-can"
+                customPress={() => navigation.navigate("InsumoHomeScreen")}
+              />
+
+              <MyButton
+                title="Repuestos"
+                btnColor="skyblue"
+                btnIcon="cogs"
+                customPress={() => navigation.navigate("RepuestoHomeScreen")}
               />
               
             </ScrollView>
@@ -50,7 +64,7 @@ const styles = StyleSheet.create({
   },
   viewContainer: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "black",
   },
   generalView: {
     flex: 1,

@@ -14,23 +14,23 @@ import MyText from "../../components/Text";
 import DatabaseConnection from "../../database/database-connection";
 const db = DatabaseConnection.getConnection();
 
-const DeleteUser = ({ navigation }) => {
-  const [cedula, setCedula] = useState("");
+const DeleteCar = ({ navigation }) => {
+  const [matricula, setMatricula] = useState("");
 
-  const deleteUser = () => {
-    console.log("deleteUser");
+  const deleteCar = () => {
+    console.log("deleteMatricula");
     db.transaction((tx) => {
       tx.executeSql(
-        `DELETE FROM users WHERE cedula = ?`,
-        [cedula],
+        `DELETE FROM cars WHERE matricula = ?`,
+        [matricula],
         (tx, results) => {
           console.log("results", results);
           // validar resultado
           if (results.rowsAffected > 0) {
-            Alert.alert("Usuario eliminado");
-            navigation.navigate("UserHomeScreen");
+            Alert.alert("Auto eliminado");
+            navigation.navigate("CarHomeScreen");
           } else {
-            Alert.alert("El usuario no existe");
+            Alert.alert("El auto no existe");
           }
         }
       );
@@ -41,13 +41,13 @@ const DeleteUser = ({ navigation }) => {
       <View style={styles.viewContainer}>
         <View style={styles.generalView}>
           <ScrollView>
-          <MyText text="Busqueda de usuario" style={styles.text}/>
+          <MyText text="Busqueda de auto" style={styles.text}/>
             <KeyboardAvoidingView style={styles.keyboardView}>
           <MyInputText
-            placeholder="Cédula"
-            onChangeText={(text) => setCedula(text)}
+            placeholder="Matricula"
+            onChangeText={(text) => setMatricula(text)}
           />
-          <MySingleButton title="Borrar Usuario" customPress={deleteUser} />
+          <MySingleButton title="Borrar Auto" customPress={deleteCar} />
           </KeyboardAvoidingView>
           </ScrollView>
         </View>
@@ -56,7 +56,7 @@ const DeleteUser = ({ navigation }) => {
   );
 };
 
-export default DeleteUser;
+export default DeleteCar;
 
 const styles = StyleSheet.create({
   container: {

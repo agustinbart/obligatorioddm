@@ -14,31 +14,31 @@ import MySingleButton from "../../components/SingleButton";
 import DatabaseConnection from "../../database/database-connection";
 const db = DatabaseConnection.getConnection();
 
-const ViewUser = ({ navigation }) => {
-  const [cedula, setCedula] = useState("");
-  const [userData, setUserData] = useState(null);
+const ViewCar = ({ navigation }) => {
+  const [id, setTratamientoId] = useState("");
+  const [tratamientoData, setTratamientoData] = useState(null);
 
   // generar funcion para obtener datos del usuario
-  const getUserData = () => {
-    console.log("getUserData");
-    setUserData({});
+  const getTratamientoData = () => {
+    console.log("getTratamientoData");
+    setTratamientoData({});
 
-    if (!cedula.trim()) {
-      Alert.alert("La cédula es requerida");
+    if (!id.trim()) {
+      Alert.alert("El id es requerido");
       return;
     }
 
     db.transaction((tx) => {
       tx.executeSql(
-        `SELECT * FROM users WHERE cedula = ?`,
-        [cedula],
+        `SELECT * FROM treatments WHERE tratamiento_id = ?`,
+        [id],
         (tx, results) => {
           console.log("results", results);
           // validar resultado
           if (results.rows.length > 0) {
-            setUserData(results.rows.item(0));
+            setTratamientoData(results.rows.item(0));
           } else {
-            Alert.alert("El usuario no existe");
+            Alert.alert("El tratamiento no existe");
           }
         }
       );
@@ -51,15 +51,15 @@ const ViewUser = ({ navigation }) => {
         <View style={styles.generalView}>
           <ScrollView>
             <KeyboardAvoidingView style={styles.keyboardView}>
-              <MyText text="Filtro de usuario" style={styles.text}/>
+              <MyText text="Filtro de tratamiento" style={styles.text}/>
               <MyInputText
                 style={styles.inputStyle}
-                placeholder="Cédula"
-                onChangeText={(text) => setCedula(text)}
+                placeholder="Id"
+                onChangeText={(text) => setTratamientoId(text)}
               />
-              <MySingleButton title="Buscar" customPress={getUserData} />
+              <MySingleButton title="Buscar" customPress={getTratamientoData} />
               <View style={styles.presenterView}>
-                <MyText text={`${!userData ? '' : userData.matricula}`} style={styles.presenterText}/>
+                <MyText text={`${!tratamientoData ? '' : tratamientoData.nombre}`} style={styles.presenterText}/>
               </View>
             </KeyboardAvoidingView>
           </ScrollView>
@@ -69,7 +69,7 @@ const ViewUser = ({ navigation }) => {
   );
 };
 
-export default ViewUser;
+export default ViewCar;
 
 const styles = StyleSheet.create({
   container: {
