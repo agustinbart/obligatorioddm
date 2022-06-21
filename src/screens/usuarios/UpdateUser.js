@@ -58,9 +58,9 @@ const UpdateUser = () => {
     db.transaction((tx) => {
       tx.executeSql(
         "UPDATE users SET nombre = ?, apellido = ?, cedula = ?, matricula = ? WHERE cedula = ?",
-        [nombre, apellido, cedula, matricula],
+        [nombre, apellido, cedula, matricula, cedulaSearch],
         (tx, results) => {
-          if (results.rows.length > 0) {
+          if (results.rowsAffected > 0) {
             Alert.alert("Usuario actualizado");
           } else {
             Alert.alert("No se pudo actualizar el usuario");

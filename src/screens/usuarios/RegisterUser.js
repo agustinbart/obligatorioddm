@@ -105,7 +105,7 @@ const RegisterUser = ({ navigation }) => {
                 style={styles.input}
                 value={cedula}
               />
-
+              
               <MyInputText
                 placeholder="Matricula"
                 onChangeText={setMatricula}

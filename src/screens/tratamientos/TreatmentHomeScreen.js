@@ -39,42 +39,42 @@ const TreatmentHomeScreen = ({ navigation }) => {
             <ScrollView>
               <MyButton
                 title="Registro de Tratamiento"
-                btnColor="green"
+                btnColor="#44BBA4"
                 btnIcon="plus"
                 customPress={() => navigation.navigate("RegisterTreatment")}
               />
 
               <MyButton
                 title="Actualizar Tratamiento"
-                btnColor="red"
+                btnColor="#44BBA4"
                 btnIcon="car-alt"
                 customPress={() => navigation.navigate("UpdateTreatment")}
               />
 
               <MyButton
                 title="Ver Tratamiento"
-                btnColor="blue"
+                btnColor="#44BBA4"
                 btnIcon="eye"
                 customPress={() => navigation.navigate("ViewTreatment")}
               />
 
               <MyButton
                 title="Borrar Tratamiento"
-                btnColor="brown"
+                btnColor="#44BBA4"
                 btnIcon="eraser"
                 customPress={() => navigation.navigate("DeleteTreatment")}
               />
 
               <MyButton
                 title="Ver todos los Tratamientos"
-                btnColor="purple"
+                btnColor="#44BBA4"
                 btnIcon="eye"
                 customPress={() => navigation.navigate("ViewAllTreatments")}
               />
               
               <MyButton
                 title="Borrar registros"
-                btnColor="red"
+                btnColor="#44BBA4"
                 btnIcon="eraser"
                 customPress={() => removeElementsOnDatabase()}
               />
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
   },
   viewContainer: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "#2A363B",
   },
   generalView: {
     flex: 1,

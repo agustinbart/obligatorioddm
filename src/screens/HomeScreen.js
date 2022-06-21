@@ -15,35 +15,35 @@ const HomeScreen = ({ navigation }) => {
 
               <MyButton
                 title="Usuarios"
-                btnColor="green"
+                btnColor="#44BBA4"
                 btnIcon="user-plus"
                 customPress={() => navigation.navigate("UserHomeScreen")}
               />
 
               <MyButton
                 title="Autos"
-                btnColor="orange"
+                btnColor="#44BBA4"
                 btnIcon="car"
                 customPress={() => navigation.navigate("CarHomeScreen")}
               />
 
               <MyButton
                 title="Tratamientos"
-                btnColor="red"
+                btnColor="#44BBA4"
                 btnIcon="wrench"
                 customPress={() => navigation.navigate("TreatmentHomeScreen")}
               />
 
               <MyButton
                 title="Insumos"
-                btnColor="blue"
+                btnColor="#44BBA4"
                 btnIcon="oil-can"
                 customPress={() => navigation.navigate("InsumoHomeScreen")}
               />
 
               <MyButton
                 title="Repuestos"
-                btnColor="skyblue"
+                btnColor="#44BBA4"
                 btnIcon="cogs"
                 customPress={() => navigation.navigate("RepuestoHomeScreen")}
               />
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   },
   viewContainer: {
     flex: 1,
-    backgroundColor: "black",
+    backgroundColor: "#2A363B",
   },
   generalView: {
     flex: 1,

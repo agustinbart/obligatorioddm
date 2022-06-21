@@ -35,7 +35,7 @@ const RootStack = () => {
           options={{
             title: "Home",
             headerStyle: {
-              backgroundColor: "#f4511e",
+              backgroundColor: "#2A363B",
             },
             headerTintColor: "#fff",
             headerTitleStyle: {
@@ -50,7 +50,7 @@ const RootStack = () => {
           options={{
             title: "User Home",
             headerStyle: {
-              backgroundColor: "#f4511e",
+              backgroundColor: "#2A363B",
             },
             headerTintColor: "#fff",
             headerTitleStyle: {
@@ -65,7 +65,7 @@ const RootStack = () => {
           options={{
             title: "Registrar Usuario",
             headerStyle: {
-              backgroundColor: "#f4511e",
+              backgroundColor: "#2A363B",
             },
             headerTintColor: "#fff",
             headerTitleStyle: {
@@ -79,7 +79,7 @@ const RootStack = () => {
           options={{
             title: "Modificar Usuario",
             headerStyle: {
-              backgroundColor: "#f4511e",
+              backgroundColor: "#2A363B",
             },
             headerTintColor: "#fff",
             headerTitleStyle: {
@@ -93,7 +93,7 @@ const RootStack = () => {
           options={{
             title: "Ver todos los Usuario",
             headerStyle: {
-              backgroundColor: "#f4511e",
+              backgroundColor: "#2A363B",
             },
             headerTintColor: "#fff",
             headerTitleStyle: {
@@ -107,7 +107,7 @@ const RootStack = () => {
           options={{
             title: "Ver Usuario",
             headerStyle: {
-              backgroundColor: "#f4511e",
+              backgroundColor: "#2A363B",
             },
             headerTintColor: "#fff",
             headerTitleStyle: {
@@ -121,7 +121,7 @@ const RootStack = () => {
           options={{
             title: "Borrar Usuario",
             headerStyle: {
-              backgroundColor: "#f4511e",
+              backgroundColor: "#2A363B",
             },
             headerTintColor: "#fff",
             headerTitleStyle: {
@@ -136,7 +136,7 @@ const RootStack = () => {
           options={{
             title: "Cars Home",
             headerStyle: {
-              backgroundColor: "#f4511e",
+              backgroundColor: "#2A363B",
             },
             headerTintColor: "#fff",
             headerTitleStyle: {
@@ -150,7 +150,7 @@ const RootStack = () => {
           options={{
             title: "Registrar Auto",
             headerStyle: {
-              backgroundColor: "#f4511e",
+              backgroundColor: "#2A363B",
             },
             headerTintColor: "#fff",
             headerTitleStyle: {
@@ -164,7 +164,7 @@ const RootStack = () => {
           options={{
             title: "Borrar Auto",
             headerStyle: {
-              backgroundColor: "#f4511e",
+              backgroundColor: "#2A363B",
             },
             headerTintColor: "#fff",
             headerTitleStyle: {
@@ -178,7 +178,7 @@ const RootStack = () => {
           options={{
             title: "Actualizar Auto",
             headerStyle: {
-              backgroundColor: "#f4511e",
+              backgroundColor: "#2A363B",
             },
             headerTintColor: "#fff",
             headerTitleStyle: {
@@ -193,7 +193,7 @@ const RootStack = () => {
           options={{
             title: "Ver todos los autos",
             headerStyle: {
-              backgroundColor: "#f4511e",
+              backgroundColor: "#2A363B",
             },
             headerTintColor: "#fff",
             headerTitleStyle: {
@@ -208,7 +208,7 @@ const RootStack = () => {
           options={{
             title: "Ver auto",
             headerStyle: {
-              backgroundColor: "#f4511e",
+              backgroundColor: "#2A363B",
             },
             headerTintColor: "#fff",
             headerTitleStyle: {
@@ -223,7 +223,7 @@ const RootStack = () => {
           options={{
             title: "Treatments Home",
             headerStyle: {
-              backgroundColor: "#f4511e",
+              backgroundColor: "#2A363B",
             },
             headerTintColor: "#fff",
             headerTitleStyle: {
@@ -238,7 +238,7 @@ const RootStack = () => {
           options={{
             title: "Registrar Tratamiento",
             headerStyle: {
-              backgroundColor: "#f4511e",
+              backgroundColor: "#2A363B",
             },
             headerTintColor: "#fff",
             headerTitleStyle: {
@@ -252,7 +252,7 @@ const RootStack = () => {
           options={{
             title: "Borrar Tratamiento",
             headerStyle: {
-              backgroundColor: "#f4511e",
+              backgroundColor: "#2A363B",
             },
             headerTintColor: "#fff",
             headerTitleStyle: {
@@ -266,7 +266,7 @@ const RootStack = () => {
           options={{
             title: "Actualizar Tratamiento",
             headerStyle: {
-              backgroundColor: "#f4511e",
+              backgroundColor: "#2A363B",
             },
             headerTintColor: "#fff",
             headerTitleStyle: {
@@ -281,7 +281,7 @@ const RootStack = () => {
           options={{
             title: "Ver todos los tratamientos",
             headerStyle: {
-              backgroundColor: "#f4511e",
+              backgroundColor: "#2A363B",
             },
             headerTintColor: "#fff",
             headerTitleStyle: {
@@ -296,7 +296,7 @@ const RootStack = () => {
           options={{
             title: "Ver tratamiento",
             headerStyle: {
-              backgroundColor: "#f4511e",
+              backgroundColor: "#2A363B",
             },
             headerTintColor: "#fff",
             headerTitleStyle: {

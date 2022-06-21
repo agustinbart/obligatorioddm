@@ -39,42 +39,42 @@ const UserHomeScreen = ({ navigation }) => {
             <ScrollView>
               <MyButton
                 title="Registro de Usuarios"
-                btnColor="green"
+                btnColor="#44BBA4"
                 btnIcon="user-plus"
                 customPress={() => navigation.navigate("RegisterUser")}
               />
 
               <MyButton
                 title="Actualizar Usuario"
-                btnColor="red"
+                btnColor="#44BBA4"
                 btnIcon="user-circle"
                 customPress={() => navigation.navigate("UpdateUser")}
               />
 
               <MyButton
                 title="Ver Usuario"
-                btnColor="blue"
+                btnColor="#44BBA4"
                 btnIcon="eye"
                 customPress={() => navigation.navigate("ViewUser")}
               />
 
               <MyButton
                 title="Borrar Usuario"
-                btnColor="brown"
+                btnColor="#44BBA4"
                 btnIcon="user-times"
                 customPress={() => navigation.navigate("DeleteUser")}
               />
 
               <MyButton
                 title="Ver todos los Usuarios"
-                btnColor="purple"
+                btnColor="#44BBA4"
                 btnIcon="eye"
                 customPress={() => navigation.navigate("ViewAllUsers")}
               />
               
               <MyButton
                 title="Borrar registros"
-                btnColor="red"
+                btnColor="#44BBA4"
                 btnIcon="eraser"
                 customPress={() => removeElementsOnDatabase()}
               />
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
   },
   viewContainer: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "#2A363B",
   },
   generalView: {
     flex: 1,

@@ -39,42 +39,42 @@ const CarHomeScreen = ({ navigation }) => {
             <ScrollView>
               <MyButton
                 title="Registro de Auto"
-                btnColor="green"
+                btnColor="#44BBA4"
                 btnIcon="plus"
                 customPress={() => navigation.navigate("RegisterCar")}
               />
 
               <MyButton
                 title="Actualizar Auto"
-                btnColor="red"
+                btnColor="#44BBA4"
                 btnIcon="car-alt"
                 customPress={() => navigation.navigate("UpdateCar")}
               />
 
               <MyButton
                 title="Ver Auto"
-                btnColor="blue"
+                btnColor="#44BBA4"
                 btnIcon="eye"
                 customPress={() => navigation.navigate("ViewCar")}
               />
 
               <MyButton
                 title="Borrar Auto"
-                btnColor="brown"
+                btnColor="#44BBA4"
                 btnIcon="eraser"
                 customPress={() => navigation.navigate("DeleteCar")}
               />
 
               <MyButton
                 title="Ver todos los Autos"
-                btnColor="purple"
+                btnColor="#44BBA4"
                 btnIcon="eye"
                 customPress={() => navigation.navigate("ViewAllCars")}
               />
               
               <MyButton
                 title="Borrar registros"
-                btnColor="red"
+                btnColor="#44BBA4"
                 btnIcon="eraser"
                 customPress={() => removeElementsOnDatabase()}
               />
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
   },
   viewContainer: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "#2A363B",
   },
   generalView: {
     flex: 1,

@@ -14,12 +14,12 @@ import MySingleButton from "../../components/SingleButton";
 import DatabaseConnection from "../../database/database-connection";
 const db = DatabaseConnection.getConnection();
 
-const UpdateCar = () => {
+const UpdateCar = ({ navigation }) => {
   const [matriculaSearch, setMatriculaSearch] = useState("");
   const [matricula, setMatricula] = useState("");
   const [marca, setMarca] = useState("");
   const [color, setColor] = useState("");
-  const [motorSerial, setMotorSerial] = useState("");
+  const [motorserial, setMotorSerial] = useState("");
 
   const searchCar = () => {
     console.log("searchCar");
@@ -38,7 +38,7 @@ const UpdateCar = () => {
             setMatricula(results.rows.item(0).matricula);
             setMarca(results.rows.item(0).marca);
             setColor(results.rows.item(0).color);
-            setMotorSerial(results.rows.item(0).motorSerial);
+            setMotorSerial(results.rows.item(0).motorserial);
           } else {
             Alert.alert("Auto no encontrado");
           }
@@ -50,18 +50,19 @@ const UpdateCar = () => {
   const updateCar = () => {
     console.log("updateCar");
 
-    if (!matricula.trim() || !marca.trim() || !color.trim() || !motorSerial.trim()) {
+    if (!matricula.trim() || !marca.trim() || !color.trim() || !motorserial.trim()) {
       Alert.alert("Faltan datos");
       return;
     }
 
     db.transaction((tx) => {
       tx.executeSql(
-        "UPDATE cars SET matricula = ?, marca = ?, color = ?, motorSerial = ? WHERE matricula = ?",
-        [matricula, marca, color, motorSerial],
+        "UPDATE cars SET matricula = ?, marca = ?, color = ?, motorserial = ? WHERE matricula = ?",
+        [matricula, marca, color, motorserial, matriculaSearch],
         (tx, results) => {
-          if (results.rows.length > 0) {
+          if (results.rowsAffected > 0) {
             Alert.alert("Auto actualizado");
+            navigation.navigate("CarHomeScreen");
           } else {
             Alert.alert("No se pudo actualizar el auto");
           }
@@ -107,7 +108,7 @@ const UpdateCar = () => {
 
               <MyInputText
                 placeholder="Ingrese serial de motor"
-                value={motorSerial}
+                value={motorserial}
                 onChangeText={(text) => setMotorSerial(text)}
               />
 

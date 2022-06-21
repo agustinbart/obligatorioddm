@@ -14,7 +14,7 @@ import MySingleButton from "../../components/SingleButton";
 import DatabaseConnection from "../../database/database-connection";
 const db = DatabaseConnection.getConnection();
 
-const UpdateTreatment = () => {
+const UpdateTreatment = ({ navigation }) => {
     const [treatmentSearch, setTreatmentSearch] = useState('');
     const [nombre, setNombre] = useState('');
     const [auto, setAuto] = useState('');
@@ -62,8 +62,9 @@ const UpdateTreatment = () => {
         "UPDATE treatments SET nombre = ?, auto = ?, fecha_inicio = ?, fecha_fin = ?, costo = ? WHERE tratamiento_id = ?",
         [nombre, auto, fecha_inicio, fecha_fin, costo, treatmentSearch],
         (tx, results) => {
-          if (results.rows.length > 0) {
+          if (results.rowsAffected > 0) {
             Alert.alert("Tratamiento actualizado");
+            navigation.navigate("TreatmentHomeScreen");
           } else {
             Alert.alert("No se pudo actualizar el tratamiento");
           }
@@ -116,6 +117,7 @@ const UpdateTreatment = () => {
             <MyInputText
                 placeholder="Ingrese costo"
                 value={costo}
+                keyboardType="number-pad"
                 onChangeText={(text) => setCosto(text)}
               />
 
