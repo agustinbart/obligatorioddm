@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import MyInputText from "../../components/InputText";
 import MySingleButton from "../../components/SingleButton";
+import DropDownMatriculas from "./GetMatriculas";
 
 import DatabaseConnection from "../../database/database-connection";
 const db = DatabaseConnection.getConnection();
@@ -105,12 +106,9 @@ const RegisterUser = ({ navigation }) => {
                 style={styles.input}
                 value={cedula}
               />
-              
-              <MyInputText
-                placeholder="Matricula"
-                onChangeText={setMatricula}
-                style={styles.input}
-                value={matricula}
+
+              <DropDownMatriculas 
+              onSelect={setMatricula}
               />
 
               <MySingleButton
@@ -143,6 +141,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   input: {
+    flex: 1,
     padding: 15,
     textAlignVertical: "top",
   }

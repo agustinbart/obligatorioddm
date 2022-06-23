@@ -10,6 +10,7 @@ import {
 import MyText from "../../components/Text";
 import MyInputText from "../../components/InputText";
 import MySingleButton from "../../components/SingleButton";
+import DropDownMatriculas from "../usuarios/GetMatriculas";
 
 import DatabaseConnection from "../../database/database-connection";
 const db = DatabaseConnection.getConnection();
@@ -96,10 +97,9 @@ const UpdateTreatment = ({ navigation }) => {
                 onChangeText={(text) => setNombre(text)}
               />
 
-              <MyInputText
-                placeholder="Ingrese matricula"
-                value={auto}
-                onChangeText={(text) => setAuto(text)}
+              <DropDownMatriculas
+                defaultValue={auto}
+                onSelect={(text) => setAuto(text)}
               />
 
               <MyInputText

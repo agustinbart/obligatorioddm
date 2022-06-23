@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import MyInputText from "../../components/InputText";
 import MySingleButton from "../../components/SingleButton";
+import DropDownMatriculas from "../usuarios/GetMatriculas";
 
 import DatabaseConnection from "../../database/database-connection";
 const db = DatabaseConnection.getConnection();
@@ -113,12 +114,8 @@ const RegisterCar = ({ navigation }) => {
                 value={nombre}
               />
 
-              <MyInputText
-                placeholder="Matricula"
-                onChangeText={setAuto}
-                style={styles.input}
-                value={auto}
-              />
+              <DropDownMatriculas
+              onSelect={setAuto} />
 
               <MyInputText
                 placeholder="Fecha de inicio (Ej. 01-01-2022)"
