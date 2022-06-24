@@ -115,7 +115,8 @@ const RegisterCar = ({ navigation }) => {
               />
 
               <DropDownMatriculas
-              onSelect={setAuto} />
+              onSelect={setAuto}
+              defaultButtonText={"Matrícula"} />
 
               <MyInputText
                 placeholder="Fecha de inicio (Ej. 01-01-2022)"

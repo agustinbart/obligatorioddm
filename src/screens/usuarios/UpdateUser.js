@@ -14,7 +14,7 @@ import MySingleButton from "../../components/SingleButton";
 import DatabaseConnection from "../../database/database-connection";
 const db = DatabaseConnection.getConnection();
 
-const UpdateUser = () => {
+const UpdateUser = ({navigation}) => {
   const [cedulaSearch, setCedulaSearch] = useState("");
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
@@ -62,6 +62,7 @@ const UpdateUser = () => {
         (tx, results) => {
           if (results.rowsAffected > 0) {
             Alert.alert("Usuario actualizado");
+            navigation.navigate("UserHomeScreen");
           } else {
             Alert.alert("No se pudo actualizar el usuario");
           }
