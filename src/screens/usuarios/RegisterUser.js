@@ -109,6 +109,7 @@ const RegisterUser = ({ navigation }) => {
 
               <DropDownMatriculas 
               onSelect={setMatricula}
+              defaultButtonText={"Matricula"}
               />
 
               <MySingleButton

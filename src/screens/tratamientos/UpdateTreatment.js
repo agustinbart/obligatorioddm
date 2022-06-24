@@ -100,6 +100,7 @@ const UpdateTreatment = ({ navigation }) => {
               <DropDownMatriculas
                 defaultValue={auto}
                 onSelect={(text) => setAuto(text)}
+                defaultButtonText={"Matricula"}
               />
 
               <MyInputText
