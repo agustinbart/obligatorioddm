@@ -38,14 +38,14 @@ const HomeScreen = ({ navigation }) => {
                 title="Insumos"
                 btnColor="#44BBA4"
                 btnIcon="oil-can"
-                customPress={() => navigation.navigate("InsumoHomeScreen")}
+                customPress={() => navigation.navigate("SupplyHomeScreen")}
               />
 
               <MyButton
                 title="Repuestos"
                 btnColor="#44BBA4"
                 btnIcon="cogs"
-                customPress={() => navigation.navigate("RepuestoHomeScreen")}
+                customPress={() => navigation.navigate("ReplacementHomeScreen")}
               />
               
             </ScrollView>

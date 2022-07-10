@@ -5,65 +5,62 @@ import MyText from "../../components/Text";
 import DatabaseConnection from "../../database/database-connection";
 const db = DatabaseConnection.getConnection();
 
-const ViewAllTreatments = ({navigation}) => {
-  const [tratamientos, setTratamientos] = useState([]);
+const ViewAllSupplies = ({navigation}) => {
+  const [supplies, setSupplies] = useState([]);
 
   // ejecutar cuando la vista se cree
   useEffect(() => {
     db.transaction((tx) => {
-      tx.executeSql(`SELECT * FROM treatments`, [], (tx, results) => {
+      tx.executeSql(`SELECT * FROM supplies`, [], (tx, results) => {
         console.log("results", results);
         // validar resultado
         if (results.rows.length > 0) {
           var temp = [];
           for (let i = 0; i < results.rows.length; ++i)
             temp.push(results.rows.item(i));
-          setTratamientos(temp);
+          setSupplies(temp);
         } else {
           Alert.alert(
             "Mensaje",
-            "No hay tratamientos!",
+            "No hay repuestos!!!",
             [
               {
                 text: "Ok",
-                onPress: () => navigation.navigate("TreatmentHomeScreen"),
+                onPress: () => navigation.navigate("SupplyHomeScreen"),
               },
             ],
             { cancelable: false }
           );
         }
       });
-    })
+    });
   }, []);
 
   const listItemView = (item) => {
     return (
       <View key={item.id} style={styles.listItemView}>
-        <MyText text={item.tratamiento_id} style={styles.text}/>
         <MyText text={item.nombre} style={styles.text}/>
-        <MyText text={item.auto} style={styles.text}/>
-        <MyText text={item.fecha_inicio} style={styles.text}/>
-        <MyText text={item.fecha_fin} style={styles.text}/>
-        <MyText text={item.costo} style={styles.text}/>
+        <MyText text={item.cantidad} style={styles.text}/>
+        <MyText text={item.tratamiento_id} style={styles.text}/>
       </View>
     );
   };
 
   return (
     <SafeAreaView style={styles.container}>
-        <View>
+      <View>
           <FlatList
             contentContainerStyle={{ paddingHorizontal: 20 }}
-            data={tratamientos}
+            data={supplies}
             key={(index) => index.toString()}
             renderItem={({ item }) => listItemView(item)}
           />
-        </View>
+      </View>
     </SafeAreaView>
   );
 };
 
-export default ViewAllTreatments;
+export default ViewAllSupplies;
 
 const styles = StyleSheet.create({
   container: {

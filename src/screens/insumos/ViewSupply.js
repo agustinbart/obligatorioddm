@@ -10,35 +10,37 @@ import {
 import MyText from "../../components/Text";
 import MyInputText from "../../components/InputText";
 import MySingleButton from "../../components/SingleButton";
+import DropDownTratamientos from "../repuestos/GetTreatments";
 
 import DatabaseConnection from "../../database/database-connection";
 const db = DatabaseConnection.getConnection();
 
-const ViewUser = ({ navigation }) => {
-  const [cedula, setCedula] = useState("");
-  const [userData, setUserData] = useState(null);
+const ViewSupply = ({ navigation }) => {
+  const [nombreSearch, setNombreSearch] = useState("");
+  const [tratamientoSearch, setTratamientoSearch] = useState("");
+  const [SupplyData, setSupplyData] = useState(null);
 
   // generar funcion para obtener datos del usuario
-  const getUserData = () => {
-    console.log("getUserData");
-    setUserData({});
+  const getSupplyData = () => {
+    console.log("getSupplyData");
+    setSupplyData({});
 
-    if (!cedula.trim()) {
-      Alert.alert("La cédula es requerida");
+    if (!nombreSearch.trim() || !tratamientoSearch.trim()) {
+      Alert.alert("Faltan datos");
       return;
     }
 
     db.transaction((tx) => {
       tx.executeSql(
-        `SELECT * FROM users WHERE cedula = ?`,
-        [cedula],
+        `SELECT * FROM supplies WHERE nombre = ? AND tratamiento_id = ?`,
+        [nombreSearch, tratamientoSearch],
         (tx, results) => {
           console.log("results", results);
           // validar resultado
           if (results.rows.length > 0) {
-            setUserData(results.rows.item(0));
+            setSupplyData(results.rows.item(0));
           } else {
-            Alert.alert("El usuario no existe");
+            Alert.alert("El insumo no existe");
           }
         }
       );
@@ -51,15 +53,20 @@ const ViewUser = ({ navigation }) => {
         <View style={styles.generalView}>
           <ScrollView>
             <KeyboardAvoidingView style={styles.keyboardView}>
-              <MyText text="Filtro de usuario" style={styles.text}/>
+              <MyText text="Filtro de insumos" style={styles.text}/>
               <MyInputText
                 style={styles.inputStyle}
-                placeholder="Cédula"
-                onChangeText={(text) => setCedula(text)}
+                placeholder="Nombre"
+                onChangeText={(text) => setNombreSearch(text)}
               />
-              <MySingleButton title="Buscar" customPress={getUserData} />
+
+              <DropDownTratamientos
+              onSelect={setTratamientoSearch}
+              defaultButtonText={"Tratamiento"}
+              />
+              <MySingleButton title="Buscar" customPress={getSupplyData} />
               <View style={styles.presenterView}>
-                <MyText text={`${!userData ? '' : userData.nombre}`} style={styles.presenterText}/>
+                <MyText text={`${!SupplyData ? '' : "Cantidad: " + SupplyData.cantidad}`} style={styles.presenterText}/>
               </View>
             </KeyboardAvoidingView>
           </ScrollView>
@@ -69,7 +76,7 @@ const ViewUser = ({ navigation }) => {
   );
 };
 
-export default ViewUser;
+export default ViewSupply;
 
 const styles = StyleSheet.create({
   container: {

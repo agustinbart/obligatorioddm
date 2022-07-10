@@ -23,6 +23,18 @@ import RegisterTreatment from "../screens/tratamientos/RegisterTreatment";
 import UpdateTreatment from "../screens/tratamientos/UpdateTreatment";
 import ViewAllTreatments from "../screens/tratamientos/ViewAllTreatments";
 import ViewTreatment from "../screens/tratamientos/ViewTreatment";
+import ReplacementHome from "../screens/repuestos/ReplacementHomeScreen";
+import RegisterReplacement from "../screens/repuestos/RegisterReplacement";
+import DeleteReplacement from "../screens/repuestos/DeleteReplacement";
+import UpdateReplacement from "../screens/repuestos/UpdateReplacement";
+import ViewReplacement from "../screens/repuestos/ViewReplacement";
+import ViewAllReplacements from "../screens/repuestos/ViewAllReplacements";
+import SupplyHomeScreen from "../screens/insumos/SupplyHomeScreen";
+import RegisterSupply from "../screens/insumos/RegisterSupply";
+import DeleteSupply from "../screens/insumos/DeleteSupply";
+import UpdateSupply from "../screens/insumos/UpdateSupply";
+import ViewAllSupplies from "../screens/insumos/ViewAllSupplies";
+import ViewSupply from "../screens/insumos/ViewSupply";
 
 // crear componente de rutas
 const RootStack = () => {
@@ -43,8 +55,8 @@ const RootStack = () => {
             },
           }}
         />
-
-        <Stack.Screen
+        
+        <Stack.Screen // Usuarios
           name="UserHomeScreen"
           component={UserHomeScreen}
           options={{
@@ -130,7 +142,7 @@ const RootStack = () => {
           }}
         />
 
-        <Stack.Screen
+        <Stack.Screen //Autos
           name="CarHomeScreen"
           component={CarHomeScreen}
           options={{
@@ -217,7 +229,7 @@ const RootStack = () => {
           }}
         />
       
-      <Stack.Screen
+      <Stack.Screen // Tratamientos
           name="TreatmentHomeScreen"
           component={TreatmentHomeScreen}
           options={{
@@ -232,7 +244,7 @@ const RootStack = () => {
           }}
         />
 
-<Stack.Screen
+      <Stack.Screen
           name="RegisterTreatment"
           component={RegisterTreatment}
           options={{
@@ -245,7 +257,8 @@ const RootStack = () => {
               fontWeight: "bold",
             },
           }}
-        />
+      />
+
         <Stack.Screen
           name="DeleteTreatment"
           component={DeleteTreatment}
@@ -305,8 +318,185 @@ const RootStack = () => {
           }}
         />
 
-      </Stack.Navigator>
+<Stack.Screen // Repuestos
+          name="ReplacementHomeScreen"
+          component={ReplacementHome}
+          options={{
+            title: "Replacements Home",
+            headerStyle: {
+              backgroundColor: "#2A363B",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+          }}
+        />
 
+      <Stack.Screen
+          name="RegisterReplacement"
+          component={RegisterReplacement}
+          options={{
+            title: "Registrar Repuesto",
+            headerStyle: {
+              backgroundColor: "#2A363B",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+          }}
+      />
+
+        <Stack.Screen
+          name="DeleteReplacement"
+          component={DeleteReplacement}
+          options={{
+            title: "Borrar Repuesto",
+            headerStyle: {
+              backgroundColor: "#2A363B",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+          }}
+        />
+        <Stack.Screen
+          name="UpdateReplacement"
+          component={UpdateReplacement}
+          options={{
+            title: "Actualizar Repuesto",
+            headerStyle: {
+              backgroundColor: "#2A363B",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+          }}
+        />
+
+    <Stack.Screen
+          name="ViewAllReplacements"
+          component={ViewAllReplacements}
+          options={{
+            title: "Ver todos los repuestos",
+            headerStyle: {
+              backgroundColor: "#2A363B",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+          }}
+        />
+
+    <Stack.Screen
+          name="ViewReplacement"
+          component={ViewReplacement}
+          options={{
+            title: "Ver repuesto",
+            headerStyle: {
+              backgroundColor: "#2A363B",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+          }}
+        />
+
+<Stack.Screen // Insumos
+          name="SupplyHomeScreen"
+          component={SupplyHomeScreen}
+          options={{
+            title: "Insumos Home",
+            headerStyle: {
+              backgroundColor: "#2A363B",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+          }}
+        />
+
+      <Stack.Screen
+          name="RegisterSupply"
+          component={RegisterSupply}
+          options={{
+            title: "Registrar Insumo",
+            headerStyle: {
+              backgroundColor: "#2A363B",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+          }}
+      />
+
+        <Stack.Screen
+          name="DeleteSupply"
+          component={DeleteSupply}
+          options={{
+            title: "Borrar Insumo",
+            headerStyle: {
+              backgroundColor: "#2A363B",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+          }}
+        />
+        <Stack.Screen
+          name="UpdateSupply"
+          component={UpdateSupply}
+          options={{
+            title: "Actualizar Insumo",
+            headerStyle: {
+              backgroundColor: "#2A363B",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+          }}
+        />
+
+    <Stack.Screen
+          name="ViewAllSupplies"
+          component={ViewAllSupplies}
+          options={{
+            title: "Ver todos los insumos",
+            headerStyle: {
+              backgroundColor: "#2A363B",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+          }}
+        />
+
+    <Stack.Screen
+          name="ViewSupply"
+          component={ViewSupply}
+          options={{
+            title: "Ver insumo",
+            headerStyle: {
+              backgroundColor: "#2A363B",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+          }}
+        />
+
+      </Stack.Navigator>
     </NavigationContainer>
   );
 };

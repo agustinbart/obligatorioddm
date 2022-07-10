@@ -10,6 +10,7 @@ import {
 import MyText from "../../components/Text";
 import MyInputText from "../../components/InputText";
 import MySingleButton from "../../components/SingleButton";
+import DropDownMatriculas from "./GetMatriculas";
 
 import DatabaseConnection from "../../database/database-connection";
 const db = DatabaseConnection.getConnection();
@@ -84,6 +85,7 @@ const UpdateUser = ({navigation}) => {
               <MyInputText
                 placeholder="Ingrese la cédula"
                 style={styles.inputStyle}
+                keyboardType="number-pad"
                 onChangeText={(text) => setCedulaSearch(text)}
               />
               <MySingleButton title="Buscar" customPress={searchUser} />
@@ -103,13 +105,14 @@ const UpdateUser = ({navigation}) => {
               <MyInputText
                 placeholder="Ingrese la cédula"
                 value={cedula}
+                keyboardType="number-pad"
                 onChangeText={(text) => setCedula(text)}
               />
 
-              <MyInputText
-                placeholder="Ingrese la matrícula"
-                value={matricula}
-                onChangeText={(text) => setMatricula(text)}
+              <DropDownMatriculas 
+              onSelect={setMatricula}
+              defaultButtonText={"Matricula"}
+              defaultValue={matricula}
               />
 
               <MySingleButton title="Actualizar" customPress={updateUser} />

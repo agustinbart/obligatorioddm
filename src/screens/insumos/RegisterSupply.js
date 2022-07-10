@@ -9,53 +9,46 @@ import {
 } from "react-native";
 import MyInputText from "../../components/InputText";
 import MySingleButton from "../../components/SingleButton";
-import DropDownMatriculas from "./GetMatriculas";
+import DropDownTratamientos from "../repuestos/GetTreatments";
 
 import DatabaseConnection from "../../database/database-connection";
 const db = DatabaseConnection.getConnection();
 
-const RegisterUser = ({ navigation }) => {
+const RegisterSupply = ({ navigation }) => {
   const [nombre, setNombre] = useState('');
-  const [apellido, setApellido] = useState('');
-  const [cedula, setCedula] = useState('');
-  const [matricula, setMatricula] = useState('');
+  const [cantidad, setCantidad] = useState('');
+  const [tratamientoId, setTratamientoId] = useState('');
 
   const clearData = () => {
     setNombre("");
-    setApellido("");
-    setCedula("");
-    setMatricula("");
+    setCantidad("");
+    setTratamientoId("");
   };
 
-  const registerUser = () => {
-    console.log("states", nombre, apellido, cedula, matricula);
+  const registerSupply = () => {
+    console.log("states", nombre, cantidad, tratamientoId);
     // validaciones estados
     debugger;
     if (!nombre.trim()) {
-      Alert.alert("Ingrese su nombre de usuario");
+      Alert.alert("Ingrese nombre");
       return;
     }
 
-    if (!apellido.trim()) {
-      Alert.alert("Ingrese su contraseña");
+    if (!cantidad.trim()) {
+      Alert.alert("Ingrese cantidad");
       return;
     }
 
-    if (!cedula.trim()) {
-      Alert.alert("Ingrese su cédula");
+    if (!tratamientoId.trim()) {
+      Alert.alert("Ingrese tratamiento");
       return;
     }
-
-    if (!matricula.trim()) {
-        Alert.alert("Ingrese su matricula");
-        return;
-      }
 
     // guardar los datos
     db.transaction((tx) => {
       tx.executeSql(
-        `INSERT INTO users (nombre, apellido, cedula, matricula) VALUES (?, ?, ?, ?)`,
-        [nombre, apellido, cedula, matricula],
+        `INSERT INTO supplies(nombre, cantidad, tratamiento_id) VALUES (?, ?, ?)`,
+        [nombre, cantidad, tratamientoId],
         (tx, results) => {
           console.log("results", results);
           // validar resultado
@@ -63,17 +56,17 @@ const RegisterUser = ({ navigation }) => {
             clearData();
             Alert.alert(
               "Éxito",
-              "Usuario registrado",
+              "Insumo registrado",
               [
                 {
                   text: "Ok",
-                  onPress: () => navigation.navigate("UserHomeScreen"),
+                  onPress: () => navigation.navigate("SupplyHomeScreen"),
                 },
               ],
               { cancelable: false }
             );
           } else {
-            Alert.alert("Error al registrar usuario");
+            Alert.alert("Error al registrar Insumo");
           }
         }
       );
@@ -94,28 +87,20 @@ const RegisterUser = ({ navigation }) => {
               />
 
               <MyInputText
-                placeholder="Apellido"
-                onChangeText={setApellido}
+                placeholder="Cantidad"
+                onChangeText={setCantidad}
                 style={styles.input}
-                value={apellido}
+                value={cantidad}
               />
 
-              <MyInputText
-                placeholder="Cédula"
-                onChangeText={setCedula}
-                style={styles.input}
-                keyboardType="number-pad"
-                value={cedula}
-              />
-
-              <DropDownMatriculas 
-              onSelect={setMatricula}
-              defaultButtonText={"Matricula"}
+              <DropDownTratamientos
+              onSelect={setTratamientoId}
+              defaultButtonText={"Tratamiento"}
               />
 
               <MySingleButton
-                title="Guardar Usuario"
-                customPress={registerUser}
+                title="Guardar Insumo"
+                customPress={registerSupply}
               />
             </KeyboardAvoidingView>
           </ScrollView>
@@ -125,7 +110,7 @@ const RegisterUser = ({ navigation }) => {
   );
 };
 
-export default RegisterUser;
+export default RegisterSupply;
 
 const styles = StyleSheet.create({
   container: {
@@ -143,7 +128,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   input: {
-    flex: 1,
     padding: 15,
     textAlignVertical: "top",
   }
