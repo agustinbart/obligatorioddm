@@ -14,7 +14,7 @@ import DropDownMatriculas from "../usuarios/GetMatriculas";
 import DatabaseConnection from "../../database/database-connection";
 const db = DatabaseConnection.getConnection();
 
-const RegisterCar = ({ navigation }) => {
+const RegisterTreatment = ({ navigation }) => {
   const [tratamiento_id, setTratamientoId] = useState('');
   const [nombre, setNombre] = useState('');
   const [auto, setAuto] = useState('');
@@ -121,6 +121,7 @@ const RegisterCar = ({ navigation }) => {
               <MyInputText
                 placeholder="Fecha de inicio (Ej. 01-01-2022)"
                 onChangeText={setFechaInicio}
+                keyboardType="number-pad"
                 style={styles.input}
                 value={fecha_inicio}
               />
@@ -128,6 +129,7 @@ const RegisterCar = ({ navigation }) => {
               <MyInputText
                 placeholder="Fecha de fin (Ej. 01-01-2022)"
                 onChangeText={setFechaFin}
+                keyboardType="number-pad"
                 style={styles.input}
                 value={fecha_fin}
               />
@@ -141,7 +143,7 @@ const RegisterCar = ({ navigation }) => {
               />
 
               <MySingleButton
-                title="Guardar Auto"
+                title="Guardar Tratamiento"
                 customPress={registerTreatment}
               />
             </KeyboardAvoidingView>
@@ -152,7 +154,7 @@ const RegisterCar = ({ navigation }) => {
   );
 };
 
-export default RegisterCar;
+export default RegisterTreatment;
 
 const styles = StyleSheet.create({
   container: {

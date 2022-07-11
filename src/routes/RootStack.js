@@ -35,6 +35,7 @@ import DeleteSupply from "../screens/insumos/DeleteSupply";
 import UpdateSupply from "../screens/insumos/UpdateSupply";
 import ViewAllSupplies from "../screens/insumos/ViewAllSupplies";
 import ViewSupply from "../screens/insumos/ViewSupply";
+import Consulta1 from "../screens/consultas/Consulta1";
 
 // crear componente de rutas
 const RootStack = () => {
@@ -486,6 +487,21 @@ const RootStack = () => {
           component={ViewSupply}
           options={{
             title: "Ver insumo",
+            headerStyle: {
+              backgroundColor: "#2A363B",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+          }}
+        />
+
+        <Stack.Screen
+          name="Consulta1"
+          component={Consulta1}
+          options={{
+            title: "Consulta",
             headerStyle: {
               backgroundColor: "#2A363B",
             },

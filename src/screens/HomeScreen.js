@@ -47,6 +47,13 @@ const HomeScreen = ({ navigation }) => {
                 btnIcon="cogs"
                 customPress={() => navigation.navigate("ReplacementHomeScreen")}
               />
+
+              <MyButton
+                title="Consulta"
+                btnColor="#44BBA4"
+                btnIcon="cogs"
+                customPress={() => navigation.navigate("Consulta1")}
+              />
               
             </ScrollView>
           </View>
