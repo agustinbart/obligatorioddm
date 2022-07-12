@@ -22,6 +22,8 @@ const RegisterTreatment = ({ navigation }) => {
   const [fecha_fin, setFechaFin] = useState('');
   const [costo, setCosto] = useState('');
 
+  const fechaRegex = /\b[0-9]{2}-[0-9]{2}-[0-9]{4}\b/;
+
   const clearData = () => {
     setTratamientoId("");
     setNombre("");
@@ -50,13 +52,13 @@ const RegisterTreatment = ({ navigation }) => {
       return;
     }
 
-    if (!fecha_inicio.trim()) {
-      Alert.alert("Ingrese fecha de inicio");
+    if (!fechaRegex.test(fecha_inicio)) {
+      Alert.alert("Fecha de inicio inválida");
       return;
     }
 
-    if (!fecha_fin.trim()) {
-      Alert.alert("Ingrese fecha de fin");
+    if (!fechaRegex.test(fecha_fin)) {
+      Alert.alert("Fecha de fin inválida");
       return;
     }
 
@@ -127,7 +129,7 @@ const RegisterTreatment = ({ navigation }) => {
               />
 
               <MyInputText
-                placeholder="Fecha de fin (Ej. 01-01-2022)"
+                placeholder="Fecha de fin (Ej. 31-01-2022)"
                 onChangeText={setFechaFin}
                 keyboardType="number-pad"
                 style={styles.input}

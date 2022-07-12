@@ -1,13 +1,13 @@
-import { StyleSheet, View, SafeAreaView, FlatList, Alert } from 'react-native'
+import { StyleSheet, ScrollView, View, SafeAreaView, FlatList, Alert } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import MyText from "../../components/Text";
 import DatabaseConnection from '../../database/database-connection';
 const db = DatabaseConnection.getConnection();
 
 const Consulta1 = () => {
-    const [StatSi, setStatSi] = useState([]);
-    const [StatNo, setStatNo] = useState([]);
-    const Union = [].concat(StatSi,StatNo);
+    const [Si, setSi] = useState([]);
+    const [No, setNo] = useState([]);
+    const Final = [].concat(Si,No);
 
       useEffect(() => {
         db.transaction((tx) => {
@@ -19,7 +19,7 @@ const Consulta1 = () => {
                 var temp = [];
                 for (let i = 0; i < results.rows.length; ++i)
                   temp.push(results.rows.item(i));
-                setStatSi(temp);
+                setSi(temp);
               }
             });  
           });
@@ -33,7 +33,7 @@ const Consulta1 = () => {
               var temp2 = [];
               for (let i = 0; i < results2.rows.length; ++i)
                 temp2.push(results2.rows.item(i));
-              setStatNo(temp2);
+              setNo(temp2);
             } 
             });
           })
@@ -55,10 +55,10 @@ const Consulta1 = () => {
 
       return (
         <SafeAreaView style={styles.container}>
-          <View>
+          <View style={styles.viewContainer}>
               <FlatList
                 contentContainerStyle={{ paddingHorizontal: 20 }}
-                data={Union}
+                data={Final}
                 key={(index) => index.toString()}
                 renderItem={({ item }) => listItemView(item)}
               />
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
       },
       viewContainer: {
         flex: 1,
-        backgroundColor: "white",
+        backgroundColor: "#2A363B",
       },
       generalView: {
         flex: 1,

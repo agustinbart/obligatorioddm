@@ -22,6 +22,8 @@ const UpdateUser = ({navigation}) => {
   const [cedula, setCedula] = useState("");
   const [matricula, setMatricula] = useState("");
 
+  const cedulaRegex = /\b[1-9]{1}.[0-9]{3}.[0-9]{3}-[0-9]{1}\b/;
+
   const searchUser = () => {
     console.log("searchUser");
 
@@ -51,8 +53,13 @@ const UpdateUser = ({navigation}) => {
   const updateUser = () => {
     console.log("updateUser");
 
-    if (!nombre.trim() || !apellido.trim() || !cedula.trim() || !matricula.trim()) {
+    if (!nombre.trim() || !apellido.trim() || !matricula.trim()) {
       Alert.alert("Faltan datos");
+      return;
+    }
+
+    if (!cedulaRegex.test(cedula)) {
+      Alert.alert("Cédula inválida");
       return;
     }
 
@@ -83,7 +90,7 @@ const UpdateUser = ({navigation}) => {
             >
               <MyText text="Buscar Usuario" style={styles.text}/>
               <MyInputText
-                placeholder="Ingrese la cédula"
+                placeholder="Ingrese la cédula Ej.(1.234.567-8)"
                 style={styles.inputStyle}
                 keyboardType="number-pad"
                 onChangeText={(text) => setCedulaSearch(text)}
@@ -103,16 +110,17 @@ const UpdateUser = ({navigation}) => {
               />
 
               <MyInputText
-                placeholder="Ingrese la cédula"
+                placeholder="Ingrese la Cédula Ej.(1.234.567-8)"
                 value={cedula}
                 keyboardType="number-pad"
                 onChangeText={(text) => setCedula(text)}
               />
 
-              <DropDownMatriculas 
-              onSelect={setMatricula}
-              defaultButtonText={"Matricula"}
-              defaultValue={matricula}
+              <MyInputText
+                placeholder="Matrícula"
+                value={matricula}
+                selectTextOnFocus={false}
+                editable={false}
               />
 
               <MySingleButton title="Actualizar" customPress={updateUser} />

@@ -89,6 +89,7 @@ const RegisterSupply = ({ navigation }) => {
               <MyInputText
                 placeholder="Cantidad"
                 onChangeText={setCantidad}
+                keyboardType="number-pad"
                 style={styles.input}
                 value={cantidad}
               />

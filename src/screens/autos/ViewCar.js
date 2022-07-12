@@ -54,7 +54,7 @@ const ViewCar = ({ navigation }) => {
               <MyText text="Filtro de auto" style={styles.text}/>
               <MyInputText
                 style={styles.inputStyle}
-                placeholder="Matricula"
+                placeholder="Ingrese la Matrícula Ej. ABC 1234"
                 onChangeText={(text) => setMatricula(text)}
               />
               <MySingleButton title="Buscar" customPress={getCarData} />

@@ -54,6 +54,7 @@ const ViewUser = ({ navigation }) => {
               <MyText text="Filtro de usuario" style={styles.text}/>
               <MyInputText
                 style={styles.inputStyle}
+                keyboardType="number-pad"
                 placeholder="Cédula"
                 onChangeText={(text) => setCedula(text)}
               />

@@ -10,6 +10,7 @@ import {
 import MyInputText from "../../components/InputText";
 import MySingleButton from "../../components/SingleButton";
 import MyText from "../../components/Text";
+import DropDownMatriculasNA from "../usuarios/GetMatriculasNoAsignadas";
 
 import DatabaseConnection from "../../database/database-connection";
 const db = DatabaseConnection.getConnection();
@@ -43,10 +44,12 @@ const DeleteCar = ({ navigation }) => {
           <ScrollView>
           <MyText text="Busqueda de auto" style={styles.text}/>
             <KeyboardAvoidingView style={styles.keyboardView}>
-          <MyInputText
-            placeholder="Matricula"
-            onChangeText={(text) => setMatricula(text)}
-          />
+            <DropDownMatriculasNA
+              onSelect={setMatricula}
+              defaultButtonText={"Matricula"}
+              />
+
+          <MyText style={styles.text} text="*Los vehículos que no aparecen es porque están asignados a un cliente y/o reparación*"/>
           <MySingleButton title="Borrar Auto" customPress={deleteCar} />
           </KeyboardAvoidingView>
           </ScrollView>

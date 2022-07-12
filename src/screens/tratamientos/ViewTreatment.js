@@ -54,7 +54,7 @@ const ViewCar = ({ navigation }) => {
               <MyText text="Filtro de tratamiento" style={styles.text}/>
               <MyInputText
                 style={styles.inputStyle}
-                placeholder="Id"
+                placeholder="Ingrese el id Ej. T-1234"
                 onChangeText={(text) => setTratamientoId(text)}
               />
               <MySingleButton title="Buscar" customPress={getTratamientoData} />

@@ -44,7 +44,9 @@ const DeleteUser = ({ navigation }) => {
           <MyText text="Busqueda de usuario" style={styles.text}/>
             <KeyboardAvoidingView style={styles.keyboardView}>
           <MyInputText
-            placeholder="Cédula"
+            style={styles.inputStyle}
+            placeholder="Cédula Ej.(1.234.567-8)"
+            keyboardType="number-pad"
             onChangeText={(text) => setCedula(text)}
           />
           <MySingleButton title="Borrar Usuario" customPress={deleteUser} />

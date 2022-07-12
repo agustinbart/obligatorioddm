@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   View,
@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import MyInputText from "../../components/InputText";
 import MySingleButton from "../../components/SingleButton";
-import DropDownMatriculas from "./GetMatriculas";
+import DropDownMatriculas from "./GetMatriculasNoAsignadas";
 
 import DatabaseConnection from "../../database/database-connection";
 const db = DatabaseConnection.getConnection();
@@ -19,6 +19,8 @@ const RegisterUser = ({ navigation }) => {
   const [apellido, setApellido] = useState('');
   const [cedula, setCedula] = useState('');
   const [matricula, setMatricula] = useState('');
+
+  const cedulaRegex = /\b[1-9]{1}.[0-9]{3}.[0-9]{3}-[0-9]{1}\b/;
 
   const clearData = () => {
     setNombre("");
@@ -41,8 +43,8 @@ const RegisterUser = ({ navigation }) => {
       return;
     }
 
-    if (!cedula.trim()) {
-      Alert.alert("Ingrese su cédula");
+    if (!cedulaRegex.test(cedula)) {
+      Alert.alert("Cédula inválida");
       return;
     }
 
@@ -53,31 +55,31 @@ const RegisterUser = ({ navigation }) => {
 
     // guardar los datos
     db.transaction((tx) => {
-      tx.executeSql(
-        `INSERT INTO users (nombre, apellido, cedula, matricula) VALUES (?, ?, ?, ?)`,
-        [nombre, apellido, cedula, matricula],
-        (tx, results) => {
-          console.log("results", results);
-          // validar resultado
-          if (results.rowsAffected > 0) {
-            clearData();
-            Alert.alert(
-              "Éxito",
-              "Usuario registrado",
-              [
-                {
-                  text: "Ok",
-                  onPress: () => navigation.navigate("UserHomeScreen"),
-                },
-              ],
-              { cancelable: false }
-            );
-          } else {
-            Alert.alert("Error al registrar usuario");
-          }
-        }
-      );
-    });
+          tx.executeSql(
+            `INSERT INTO users (nombre, apellido, cedula, matricula) VALUES (?, ?, ?, ?)`,
+            [nombre, apellido, cedula, matricula],
+            (tx, results) => {
+              console.log("results", results);
+              // validar resultado
+              if (results.rowsAffected > 0) {
+                clearData();
+                Alert.alert(
+                  "Éxito",
+                  "Usuario registrado",
+                  [
+                    {
+                      text: "Ok",
+                      onPress: () => navigation.navigate("UserHomeScreen"),
+                    },
+                  ],
+                  { cancelable: false }
+                );
+              } else {
+                Alert.alert("Error al registrar usuario");
+              }
+            }
+          ); 
+        }, []);
   };
 
   return (
@@ -101,14 +103,14 @@ const RegisterUser = ({ navigation }) => {
               />
 
               <MyInputText
-                placeholder="Cédula"
+                placeholder="Cédula Ej.(1.234.567-8)"
                 onChangeText={setCedula}
                 style={styles.input}
                 keyboardType="number-pad"
                 value={cedula}
               />
 
-              <DropDownMatriculas 
+              <DropDownMatriculas
               onSelect={setMatricula}
               defaultButtonText={"Matricula"}
               />

@@ -23,6 +23,8 @@ const UpdateTreatment = ({ navigation }) => {
     const [fecha_fin, setFechaFin] = useState('');
     const [costo, setCosto] = useState(0);
 
+    const fechaRegex = /\b[0-9]{2}-[0-9]{2}-[0-9]{4}\b/;
+
   const searchTreatment = () => {
     console.log("searchTreatment");
 
@@ -53,8 +55,18 @@ const UpdateTreatment = ({ navigation }) => {
   const updateTreatment = () => {
     console.log("updateTreatment");
 
-    if (!nombre.trim() || !auto.trim() || !fecha_inicio.trim() || !fecha_fin.trim()) {
+    if (!nombre.trim() || !auto.trim()) {
       Alert.alert("Faltan datos");
+      return;
+    }
+
+    if (!fechaRegex.test(fecha_inicio)) {
+      Alert.alert("Fecha de inicio inválida");
+      return;
+    }
+
+    if (!fechaRegex.test(fecha_fin)) {
+      Alert.alert("Fecha de fin inválida");
       return;
     }
 
@@ -85,7 +97,7 @@ const UpdateTreatment = ({ navigation }) => {
             >
               <MyText text="Buscar Tratamiento" style={styles.text}/>
               <MyInputText
-                placeholder="Ingrese el id"
+                placeholder="Ingrese el id Ej. T-1234"
                 style={styles.inputStyle}
                 onChangeText={(text) => setTreatmentSearch(text)}
               />
@@ -104,13 +116,15 @@ const UpdateTreatment = ({ navigation }) => {
               />
 
               <MyInputText
-                placeholder="Ingrese fecha de inicio"
+                placeholder="Fecha de inicio (Ej. 01-01-2022)"
+                keyboardType="number-pad"
                 value={fecha_inicio}
                 onChangeText={(text) => setFechaInicio(text)}
               />
 
               <MyInputText
-                placeholder="Ingrese fecha de fin"
+                placeholder="Fecha de Fin (Ej. 31-01-2022)"
+                keyboardType="number-pad"
                 value={fecha_fin}
                 onChangeText={(text) => setFechaFin(text)}
               />

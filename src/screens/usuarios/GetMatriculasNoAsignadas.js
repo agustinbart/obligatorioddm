@@ -6,47 +6,45 @@ import SelectDropdown from "react-native-select-dropdown";
 import DatabaseConnection from "../../database/database-connection";
 const db = DatabaseConnection.getConnection();
 
-const DropDownMatriculas = (props) => {
-  const [cars, setCars] = useState([]);
+const DropDownMatriculasNA = (props) => {
+    const [mat, setMat] = useState([]);
 
-  // ejecutar cuando la vista se cree
-  useEffect(() => {
-    db.transaction((tx) => {
-      tx.executeSql(`SELECT * FROM cars`, [], (tx, results) => {
-        console.log("results", results);
-        // validar resultado
-        if (results.rows.length > 0) {
-          var temp = [];
-          for (let i = 0; i < results.rows.length; ++i)
-            temp.push(results.rows.item(i));
-          setCars(temp);
-        } else {
-          Alert.alert(
-            "Mensaje",
-            "No hay autos!",
-            [
-              {
-                text: "Ok"
-              },
-            ],
-            { cancelable: false }
-          );
-        }
-      });
-    });
-  }, []);
-
+    useEffect(() => {
+        db.transaction((tx) => {
+          tx.executeSql(`SELECT c.matricula FROM cars c WHERE c.matricula NOT IN (SELECT u.matricula FROM users u)`, [], (tx, results) => {
+            console.log("results", results);
+            // validar resultado
+            if (results.rows.length > 0) {
+              var temp = [];
+              for (let i = 0; i < results.rows.length; ++i)
+                temp.push(results.rows.item(i));
+              setMat(temp);
+            } else {
+              Alert.alert(
+                "Mensaje",
+                "No hay usuarios!!!",
+                [
+                  {
+                    text: "Ok",
+                    onPress: () => navigation.navigate("UserHomeScreen"),
+                  },
+                ],
+                { cancelable: false }
+              );
+            }
+          });
+        });
+      }, []);
 
   return (
     <SafeAreaView style={styles.container}>
         <View>
             <SelectDropdown
-                data={cars.map(car => car.matricula)}
+                data={mat.map(mats => mats.matricula)}
                 onSelect={props.onSelect}
                 defaultButtonText={props.defaultButtonText}
                 buttonStyle={styles.select}
                 defaultValue={props.defaultValue}
-                disabled={props.disabled}
                 buttonTextAfterSelection={(selectedItem, index) => {
                     return selectedItem
                 }}
@@ -59,7 +57,7 @@ const DropDownMatriculas = (props) => {
   );
 };
 
-export default DropDownMatriculas;
+export default DropDownMatriculasNA;
 
 const styles = StyleSheet.create({
   container: {

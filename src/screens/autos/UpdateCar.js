@@ -82,14 +82,14 @@ const UpdateCar = ({ navigation }) => {
             >
               <MyText text="Buscar Auto" style={styles.text}/>
               <MyInputText
-                placeholder="Ingrese la matricula"
+                placeholder="Ingrese la Matrícula Ej. ABC 1234"
                 style={styles.inputStyle}
                 onChangeText={(text) => setMatriculaSearch(text)}
               />
               <MySingleButton title="Buscar" customPress={searchCar} />
 
               <MyInputText
-                placeholder="Ingrese matricula"
+                placeholder="Ingrese la Matrícula Ej. ABC 1234"
                 value={matricula}
                 onChangeText={(text) => setMatricula(text)}
               />

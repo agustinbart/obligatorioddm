@@ -51,7 +51,7 @@ const HomeScreen = ({ navigation }) => {
               <MyButton
                 title="Consulta"
                 btnColor="#44BBA4"
-                btnIcon="cogs"
+                btnIcon="clipboard-list"
                 customPress={() => navigation.navigate("Consulta1")}
               />
               

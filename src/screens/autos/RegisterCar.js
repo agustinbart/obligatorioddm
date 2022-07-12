@@ -86,7 +86,7 @@ const RegisterCar = ({ navigation }) => {
           <ScrollView>
             <KeyboardAvoidingView style={styles.keyboardView}>
               <MyInputText
-                placeholder="Matricula"
+                placeholder="Matricula Ej. ABC 1234"
                 onChangeText={setMatricula}
                 style={styles.input}
                 value={matricula}
