@@ -10,10 +10,10 @@ const DropDownMatriculasNA = (props) => {
     const [mat, setMat] = useState([]);
 
     useEffect(() => {
-        db.transaction((tx) => {
+        db.transaction((tx) => { // Seleccionamos las matrículas que NO ESTAN en la tabla de 'users'.
           tx.executeSql(`SELECT c.matricula FROM cars c WHERE c.matricula NOT IN (SELECT u.matricula FROM users u)`, [], (tx, results) => {
             console.log("results", results);
-            // validar resultado
+            // Validar resultado
             if (results.rows.length > 0) {
               var temp = [];
               for (let i = 0; i < results.rows.length; ++i)
@@ -40,7 +40,7 @@ const DropDownMatriculasNA = (props) => {
     <SafeAreaView style={styles.container}>
         <View>
             <SelectDropdown
-                data={mat.map(mats => mats.matricula)}
+                data={mat.map(mats => mats.matricula)} // Filtramos el array 'mat' para que solo queden las matrículas.
                 onSelect={props.onSelect}
                 defaultButtonText={props.defaultButtonText}
                 buttonStyle={styles.select}

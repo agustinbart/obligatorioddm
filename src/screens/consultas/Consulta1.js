@@ -7,10 +7,10 @@ const db = DatabaseConnection.getConnection();
 const Consulta1 = () => {
     const [Si, setSi] = useState([]);
     const [No, setNo] = useState([]);
-    const Final = [].concat(Si,No);
+    const Final = [].concat(Si,No); // Unimos las tablas 'Si' y 'No'
 
       useEffect(() => {
-        db.transaction((tx) => {
+        db.transaction((tx) => { // Seleccionamos los tratamientos que SÍ usaron repuestos
             tx.executeSql(`SELECT u.nombre, t.auto, t.tratamiento_id, t.fecha_inicio, t.costo, 'Si' As [repuesto]
                            FROM users u, treatments t
                            WHERE u.matricula = t.auto and t.tratamiento_id IN (SELECT DISTINCT tratamiento_id FROM replacements)`, [], (tx, results) => {
@@ -24,7 +24,7 @@ const Consulta1 = () => {
             });  
           });
 
-          db.transaction((tx2) => {
+          db.transaction((tx2) => { // Seleccionamos los tratamientos que NO usaron repuestos
             tx2.executeSql(`SELECT u.nombre, t.auto, t.tratamiento_id, t.fecha_inicio, t.costo, 'No' As [repuesto]
                            FROM users u, treatments t
                            WHERE u.matricula = t.auto and t.tratamiento_id NOT IN (SELECT DISTINCT tratamiento_id FROM replacements)`, [], (tx2, results2) => {
@@ -40,7 +40,7 @@ const Consulta1 = () => {
           
       }, []);
 
-      const listItemView = (item) => {
+      const listItemView = (item) => { // Lista de elementos a mostrar.
         return (
           <View key={item.id} style={styles.listItemView}>
             <MyText text={item.tratamiento_id} style={styles.text}/>
@@ -55,7 +55,7 @@ const Consulta1 = () => {
 
       return (
         <SafeAreaView style={styles.container}>
-          <View style={styles.viewContainer}>
+          <View>
               <FlatList
                 contentContainerStyle={{ paddingHorizontal: 20 }}
                 data={Final}
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
       },
       viewContainer: {
         flex: 1,
-        backgroundColor: "#2A363B",
+        backgroundColor: "white",
       },
       generalView: {
         flex: 1,

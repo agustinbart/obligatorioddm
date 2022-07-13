@@ -21,7 +21,7 @@ const DeleteReplacement = ({ navigation }) => {
 
   const deleteReplacement = () => {
     console.log("deleteReplacement");
-    db.transaction((tx) => {
+    db.transaction((tx) => { // Borramos el registro que coincida con el nombre e id de tratamiento ingresados.
       tx.executeSql(
         `DELETE FROM replacements WHERE nombre = ? AND tratamiento_id = ?`,
         [nombre, tratamientoId],

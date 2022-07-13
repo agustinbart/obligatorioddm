@@ -16,14 +16,14 @@ import DatabaseConnection from "../../database/database-connection";
 const db = DatabaseConnection.getConnection();
 
 const UpdateTreatment = ({ navigation }) => {
-    const [treatmentSearch, setTreatmentSearch] = useState('');
-    const [nombre, setNombre] = useState('');
-    const [auto, setAuto] = useState('');
-    const [fecha_inicio, setFechaInicio] = useState('');
-    const [fecha_fin, setFechaFin] = useState('');
-    const [costo, setCosto] = useState(0);
+  const [treatmentSearch, setTreatmentSearch] = useState('');
+  const [nombre, setNombre] = useState('');
+  const [auto, setAuto] = useState('');
+  const [fecha_inicio, setFechaInicio] = useState('');
+  const [fecha_fin, setFechaFin] = useState('');
+  const [costo, setCosto] = useState(0);
 
-    const fechaRegex = /\b[0-9]{2}-[0-9]{2}-[0-9]{4}\b/;
+  const fechaRegex = /\b[0-9]{2}-[0-9]{2}-[0-9]{4}\b/;
 
   const searchTreatment = () => {
     console.log("searchTreatment");
@@ -60,18 +60,18 @@ const UpdateTreatment = ({ navigation }) => {
       return;
     }
 
-    if (!fechaRegex.test(fecha_inicio)) {
+    if (!fechaRegex.test(fecha_inicio)) { // Testeamos que la fecha de inicio tenga el formato dado.
       Alert.alert("Fecha de inicio inválida");
       return;
     }
 
-    if (!fechaRegex.test(fecha_fin)) {
+    if (!fechaRegex.test(fecha_fin)) { // Testeamos que la fecha de fin tenga el formato dado.
       Alert.alert("Fecha de fin inválida");
       return;
     }
 
     db.transaction((tx) => {
-      tx.executeSql(
+      tx.executeSql( // Actualizamos el registro que coincida con el id de tratamiento ingresado.
         "UPDATE treatments SET nombre = ?, auto = ?, fecha_inicio = ?, fecha_fin = ?, costo = ? WHERE tratamiento_id = ?",
         [nombre, auto, fecha_inicio, fecha_fin, costo, treatmentSearch],
         (tx, results) => {
@@ -95,7 +95,7 @@ const UpdateTreatment = ({ navigation }) => {
               behavior="padding"
               style={styles.keyboardView}
             >
-              <MyText text="Buscar Tratamiento" style={styles.text}/>
+              <MyText text="Buscar Tratamiento" style={styles.text} />
               <MyInputText
                 placeholder="Ingrese el id Ej. T-1234"
                 style={styles.inputStyle}
@@ -129,7 +129,7 @@ const UpdateTreatment = ({ navigation }) => {
                 onChangeText={(text) => setFechaFin(text)}
               />
 
-            <MyInputText
+              <MyInputText
                 placeholder="Ingrese costo"
                 value={costo}
                 keyboardType="number-pad"

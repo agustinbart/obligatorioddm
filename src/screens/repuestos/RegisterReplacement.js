@@ -44,14 +44,14 @@ const RegisterReplacement = ({ navigation }) => {
       return;
     }
 
-    // guardar los datos
+    // Guardar los datos
     db.transaction((tx) => {
       tx.executeSql(
         `INSERT INTO replacements(nombre, cantidad, tratamiento_id) VALUES (?, ?, ?)`,
         [nombre, cantidad, tratamientoId],
         (tx, results) => {
           console.log("results", results);
-          // validar resultado
+          // Validar resultado
           if (results.rowsAffected > 0) {
             clearData();
             Alert.alert(

@@ -20,12 +20,12 @@ const DeleteUser = ({ navigation }) => {
   const deleteUser = () => {
     console.log("deleteUser");
     db.transaction((tx) => {
-      tx.executeSql(
+      tx.executeSql( // Borramos el registro que coincida con la cédula ingresada.
         `DELETE FROM users WHERE cedula = ?`,
         [cedula],
         (tx, results) => {
           console.log("results", results);
-          // validar resultado
+          // Validar resultado
           if (results.rowsAffected > 0) {
             Alert.alert("Usuario eliminado");
             navigation.navigate("UserHomeScreen");
@@ -41,16 +41,19 @@ const DeleteUser = ({ navigation }) => {
       <View style={styles.viewContainer}>
         <View style={styles.generalView}>
           <ScrollView>
-          <MyText text="Busqueda de usuario" style={styles.text}/>
+
+            <MyText text="Busqueda de usuario" style={styles.text} />
+
             <KeyboardAvoidingView style={styles.keyboardView}>
-          <MyInputText
-            style={styles.inputStyle}
-            placeholder="Cédula Ej.(1.234.567-8)"
-            keyboardType="number-pad"
-            onChangeText={(text) => setCedula(text)}
-          />
-          <MySingleButton title="Borrar Usuario" customPress={deleteUser} />
-          </KeyboardAvoidingView>
+              <MyInputText
+                style={styles.inputStyle}
+                placeholder="Cédula Ej.(1.234.567-8)"
+                keyboardType="number-pad"
+                onChangeText={(text) => setCedula(text)}
+              />
+              <MySingleButton title="Borrar Usuario" customPress={deleteUser} />
+            </KeyboardAvoidingView>
+            
           </ScrollView>
         </View>
       </View>

@@ -36,7 +36,7 @@ const UpdateReplacement = ({navigation}) => {
       }
 
     db.transaction((tx) => {
-      tx.executeSql(
+      tx.executeSql( // Seleccionamos el registro que coincida con el nombre e id de tratamiento ingresados.
         "SELECT * FROM replacements WHERE nombre = ? AND tratamiento_id = ?",
         [nombreSearch, tratamientoSearch],
         (tx, results) => {
@@ -59,7 +59,7 @@ const UpdateReplacement = ({navigation}) => {
       return;
     }
 
-    db.transaction((tx) => {
+    db.transaction((tx) => { // Actualizamos el registro que coincida con el nombre e id de tratamiento ingresados.
       tx.executeSql(
         "UPDATE replacements SET nombre = ?, cantidad = ?, tratamiento_id = ? WHERE nombre = ? AND tratamiento_id = ?",
         [nombre, cantidad, tratamientoId, nombreSearch, tratamientoSearch],

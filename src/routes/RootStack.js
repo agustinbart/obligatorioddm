@@ -56,7 +56,7 @@ const RootStack = () => {
             },
           }}
         />
-        
+
         <Stack.Screen // Usuarios
           name="UserHomeScreen"
           component={UserHomeScreen}
@@ -70,7 +70,7 @@ const RootStack = () => {
               fontWeight: "bold",
             },
           }}
-        /> 
+        />
 
         <Stack.Screen
           name="RegisterUser"
@@ -200,7 +200,7 @@ const RootStack = () => {
           }}
         />
 
-    <Stack.Screen
+        <Stack.Screen
           name="ViewAllCars"
           component={ViewAllCars}
           options={{
@@ -215,7 +215,7 @@ const RootStack = () => {
           }}
         />
 
-    <Stack.Screen
+        <Stack.Screen
           name="ViewCar"
           component={ViewCar}
           options={{
@@ -229,8 +229,8 @@ const RootStack = () => {
             },
           }}
         />
-      
-      <Stack.Screen // Tratamientos
+
+        <Stack.Screen // Tratamientos
           name="TreatmentHomeScreen"
           component={TreatmentHomeScreen}
           options={{
@@ -245,7 +245,7 @@ const RootStack = () => {
           }}
         />
 
-      <Stack.Screen
+        <Stack.Screen
           name="RegisterTreatment"
           component={RegisterTreatment}
           options={{
@@ -258,7 +258,7 @@ const RootStack = () => {
               fontWeight: "bold",
             },
           }}
-      />
+        />
 
         <Stack.Screen
           name="DeleteTreatment"
@@ -289,7 +289,7 @@ const RootStack = () => {
           }}
         />
 
-    <Stack.Screen
+        <Stack.Screen
           name="ViewAllTreatments"
           component={ViewAllTreatments}
           options={{
@@ -304,7 +304,7 @@ const RootStack = () => {
           }}
         />
 
-    <Stack.Screen
+        <Stack.Screen
           name="ViewTreatment"
           component={ViewTreatment}
           options={{
@@ -319,7 +319,7 @@ const RootStack = () => {
           }}
         />
 
-<Stack.Screen // Repuestos
+        <Stack.Screen // Repuestos
           name="ReplacementHomeScreen"
           component={ReplacementHome}
           options={{
@@ -334,7 +334,7 @@ const RootStack = () => {
           }}
         />
 
-      <Stack.Screen
+        <Stack.Screen
           name="RegisterReplacement"
           component={RegisterReplacement}
           options={{
@@ -347,7 +347,7 @@ const RootStack = () => {
               fontWeight: "bold",
             },
           }}
-      />
+        />
 
         <Stack.Screen
           name="DeleteReplacement"
@@ -378,7 +378,7 @@ const RootStack = () => {
           }}
         />
 
-    <Stack.Screen
+        <Stack.Screen
           name="ViewAllReplacements"
           component={ViewAllReplacements}
           options={{
@@ -393,7 +393,7 @@ const RootStack = () => {
           }}
         />
 
-    <Stack.Screen
+        <Stack.Screen
           name="ViewReplacement"
           component={ViewReplacement}
           options={{
@@ -408,7 +408,7 @@ const RootStack = () => {
           }}
         />
 
-<Stack.Screen // Insumos
+        <Stack.Screen // Insumos
           name="SupplyHomeScreen"
           component={SupplyHomeScreen}
           options={{
@@ -423,7 +423,7 @@ const RootStack = () => {
           }}
         />
 
-      <Stack.Screen
+        <Stack.Screen
           name="RegisterSupply"
           component={RegisterSupply}
           options={{
@@ -436,7 +436,7 @@ const RootStack = () => {
               fontWeight: "bold",
             },
           }}
-      />
+        />
 
         <Stack.Screen
           name="DeleteSupply"
@@ -467,7 +467,7 @@ const RootStack = () => {
           }}
         />
 
-    <Stack.Screen
+        <Stack.Screen
           name="ViewAllSupplies"
           component={ViewAllSupplies}
           options={{
@@ -482,7 +482,7 @@ const RootStack = () => {
           }}
         />
 
-    <Stack.Screen
+        <Stack.Screen
           name="ViewSupply"
           component={ViewSupply}
           options={{

@@ -22,7 +22,7 @@ const UpdateUser = ({navigation}) => {
   const [cedula, setCedula] = useState("");
   const [matricula, setMatricula] = useState("");
 
-  const cedulaRegex = /\b[1-9]{1}.[0-9]{3}.[0-9]{3}-[0-9]{1}\b/;
+  const cedulaRegex = /\b[1-9]{1}.[0-9]{3}.[0-9]{3}-[0-9]{1}\b/; // Formato de cédula.
 
   const searchUser = () => {
     console.log("searchUser");
@@ -33,7 +33,7 @@ const UpdateUser = ({navigation}) => {
     }
 
     db.transaction((tx) => {
-      tx.executeSql(
+      tx.executeSql( // Seleccionamos el registro que coincida con la cédula ingresada.
         "SELECT * FROM users WHERE cedula = ?",
         [cedulaSearch],
         (tx, results) => {
@@ -58,13 +58,13 @@ const UpdateUser = ({navigation}) => {
       return;
     }
 
-    if (!cedulaRegex.test(cedula)) {
+    if (!cedulaRegex.test(cedula)) { // Testeamos que la cédula ingresada coincida con el formato dado.
       Alert.alert("Cédula inválida");
       return;
     }
 
     db.transaction((tx) => {
-      tx.executeSql(
+      tx.executeSql( // Actualizamos el registro que coincida con la cédula ingresada.
         "UPDATE users SET nombre = ?, apellido = ?, cedula = ?, matricula = ? WHERE cedula = ?",
         [nombre, apellido, cedula, matricula, cedulaSearch],
         (tx, results) => {

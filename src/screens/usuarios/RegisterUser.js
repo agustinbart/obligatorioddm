@@ -20,7 +20,7 @@ const RegisterUser = ({ navigation }) => {
   const [cedula, setCedula] = useState('');
   const [matricula, setMatricula] = useState('');
 
-  const cedulaRegex = /\b[1-9]{1}.[0-9]{3}.[0-9]{3}-[0-9]{1}\b/;
+  const cedulaRegex = /\b[1-9]{1}.[0-9]{3}.[0-9]{3}-[0-9]{1}\b/; // Formato de cédula.
 
   const clearData = () => {
     setNombre("");
@@ -43,43 +43,43 @@ const RegisterUser = ({ navigation }) => {
       return;
     }
 
-    if (!cedulaRegex.test(cedula)) {
+    if (!cedulaRegex.test(cedula)) { // Testeamos que la cédula ingresada coincida con el formato dado.
       Alert.alert("Cédula inválida");
       return;
     }
 
     if (!matricula.trim()) {
-        Alert.alert("Ingrese su matricula");
-        return;
-      }
+      Alert.alert("Ingrese su matricula");
+      return;
+    }
 
-    // guardar los datos
+    // Guardar los datos
     db.transaction((tx) => {
-          tx.executeSql(
-            `INSERT INTO users (nombre, apellido, cedula, matricula) VALUES (?, ?, ?, ?)`,
-            [nombre, apellido, cedula, matricula],
-            (tx, results) => {
-              console.log("results", results);
-              // validar resultado
-              if (results.rowsAffected > 0) {
-                clearData();
-                Alert.alert(
-                  "Éxito",
-                  "Usuario registrado",
-                  [
-                    {
-                      text: "Ok",
-                      onPress: () => navigation.navigate("UserHomeScreen"),
-                    },
-                  ],
-                  { cancelable: false }
-                );
-              } else {
-                Alert.alert("Error al registrar usuario");
-              }
-            }
-          ); 
-        }, []);
+      tx.executeSql(
+        `INSERT INTO users (nombre, apellido, cedula, matricula) VALUES (?, ?, ?, ?)`,
+        [nombre, apellido, cedula, matricula],
+        (tx, results) => {
+          console.log("results", results);
+          // Validar resultado
+          if (results.rowsAffected > 0) {
+            clearData();
+            Alert.alert(
+              "Éxito",
+              "Usuario registrado",
+              [
+                {
+                  text: "Ok",
+                  onPress: () => navigation.navigate("UserHomeScreen"),
+                },
+              ],
+              { cancelable: false }
+            );
+          } else {
+            Alert.alert("Error al registrar usuario");
+          }
+        }
+      );
+    }, []);
   };
 
   return (
@@ -111,8 +111,8 @@ const RegisterUser = ({ navigation }) => {
               />
 
               <DropDownMatriculas
-              onSelect={setMatricula}
-              defaultButtonText={"Matricula"}
+                onSelect={setMatricula}
+                defaultButtonText={"Matricula"}
               />
 
               <MySingleButton

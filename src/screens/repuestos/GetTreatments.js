@@ -9,12 +9,12 @@ const db = DatabaseConnection.getConnection();
 const DropDownTratamientos = (props) => {
   const [treatments, setTreatments] = useState([]);
 
-  // ejecutar cuando la vista se cree
+  // Ejecutar cuando la vista se cree
   useEffect(() => {
     db.transaction((tx) => {
       tx.executeSql(`SELECT * FROM treatments`, [], (tx, results) => {
         console.log("results", results);
-        // validar resultado
+        // Validar resultado
         if (results.rows.length > 0) {
           var temp = [];
           for (let i = 0; i < results.rows.length; ++i)

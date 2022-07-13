@@ -20,7 +20,7 @@ const ViewReplacement = ({ navigation }) => {
   const [tratamientoSearch, setTratamientoSearch] = useState("");
   const [replacementData, setReplacementData] = useState(null);
 
-  // generar funcion para obtener datos del usuario
+  // Generar funcion para obtener datos del repuesto
   const getReplacementData = () => {
     console.log("getReplacementData");
     setReplacementData({});

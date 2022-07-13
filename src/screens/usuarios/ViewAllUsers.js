@@ -8,12 +8,12 @@ const db = DatabaseConnection.getConnection();
 const ViewAllUsers = ({navigation}) => {
   const [users, setUsers] = useState([]);
 
-  // ejecutar cuando la vista se cree
+  // Ejecutar cuando la vista se cree
   useEffect(() => {
     db.transaction((tx) => {
       tx.executeSql(`SELECT * FROM users`, [], (tx, results) => {
         console.log("results", results);
-        // validar resultado
+        // Validar resultado
         if (results.rows.length > 0) {
           var temp = [];
           for (let i = 0; i < results.rows.length; ++i)
@@ -36,7 +36,7 @@ const ViewAllUsers = ({navigation}) => {
     });
   }, []);
 
-  const listItemView = (item) => {
+  const listItemView = (item) => { // Lista de elementos a mostrar.
     return (
       <View key={item.id} style={styles.listItemView}>
         <MyText text={item.nombre} style={styles.text}/>

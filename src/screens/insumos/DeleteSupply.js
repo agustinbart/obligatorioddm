@@ -19,7 +19,7 @@ const DeleteSupply = ({ navigation }) => {
   const [nombre, setNombre] = useState("");
   const [tratamientoId, setTratamientoId] = useState("");
 
-  const deleteSupply = () => {
+  const deleteSupply = () => { // Borramos de la base de datos el registro con el nombre e id de tratamiento ingresados.
     console.log("deleteSupply");
     db.transaction((tx) => {
       tx.executeSql(

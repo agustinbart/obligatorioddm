@@ -7,7 +7,6 @@ import {
   KeyboardAvoidingView,
   ScrollView,
 } from "react-native";
-import MyInputText from "../../components/InputText";
 import MySingleButton from "../../components/SingleButton";
 import MyText from "../../components/Text";
 import DropDownMatriculasNA from "../usuarios/GetMatriculasNoAsignadas";
@@ -18,7 +17,7 @@ const db = DatabaseConnection.getConnection();
 const DeleteCar = ({ navigation }) => {
   const [matricula, setMatricula] = useState("");
 
-  const deleteCar = () => {
+  const deleteCar = () => { // Borramos de la base de datos los registros con la matrícula ingresada.
     console.log("deleteMatricula");
     db.transaction((tx) => {
       tx.executeSql(
@@ -44,6 +43,7 @@ const DeleteCar = ({ navigation }) => {
           <ScrollView>
           <MyText text="Busqueda de auto" style={styles.text}/>
             <KeyboardAvoidingView style={styles.keyboardView}>
+              
             <DropDownMatriculasNA
               onSelect={setMatricula}
               defaultButtonText={"Matricula"}

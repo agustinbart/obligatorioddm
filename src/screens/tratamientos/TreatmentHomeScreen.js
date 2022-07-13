@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { StyleSheet, View, SafeAreaView, ScrollView, Alert } from "react-native";
 import MyButton from "../../components/Button";
 
@@ -8,11 +8,11 @@ const db = DatabaseConnection.getConnection();
 const TreatmentHomeScreen = ({ navigation }) => {
 
   useEffect(() => {
-    db.transaction( (txn) => {
-      txn.executeSql(
+    db.transaction((txn) => {
+      txn.executeSql( // Creamos la tabla en la base de datos.
         "SELECT name FROM sqlite_master WHERE type='table' AND name='treatments'",
         [],
-         (tx, res) =>{
+        (tx, res) => {
           console.log('item:', res.rows.length);
           if (res.rows.length == 0) {
             txn.executeSql('DROP TABLE IF EXISTS treatments', []);
@@ -26,8 +26,8 @@ const TreatmentHomeScreen = ({ navigation }) => {
     });
   }, []);
 
-  const removeElementsOnDatabase = () => {
-    db.transaction( (txn) => {
+  const removeElementsOnDatabase = () => { // Eliminar registros de la tabla en la base de datos.
+    db.transaction((txn) => {
       txn.executeSql('DELETE FROM treatments', []);
     });
   }
@@ -71,7 +71,7 @@ const TreatmentHomeScreen = ({ navigation }) => {
                 btnIcon="eye"
                 customPress={() => navigation.navigate("ViewAllTreatments")}
               />
-              
+
               <MyButton
                 title="Borrar registros"
                 btnColor="#44BBA4"

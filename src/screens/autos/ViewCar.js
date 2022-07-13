@@ -18,7 +18,7 @@ const ViewCar = ({ navigation }) => {
   const [matricula, setMatricula] = useState("");
   const [carData, setCarData] = useState(null);
 
-  // generar funcion para obtener datos del usuario
+  // Generar funcion para obtener datos del auto
   const getCarData = () => {
     console.log("getCarData");
     setCarData({});
@@ -34,7 +34,7 @@ const ViewCar = ({ navigation }) => {
         [matricula],
         (tx, results) => {
           console.log("results", results);
-          // validar resultado
+          // Validar resultado
           if (results.rows.length > 0) {
             setCarData(results.rows.item(0));
           } else {

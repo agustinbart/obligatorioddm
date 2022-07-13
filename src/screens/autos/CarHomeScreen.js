@@ -8,7 +8,7 @@ const db = DatabaseConnection.getConnection();
 const CarHomeScreen = ({ navigation }) => {
 
   useEffect(() => {
-    db.transaction( (txn) => {
+    db.transaction( (txn) => { // Creación base de datos.
       txn.executeSql(
         "SELECT name FROM sqlite_master WHERE type='table' AND name='cars'",
         [],
@@ -26,7 +26,7 @@ const CarHomeScreen = ({ navigation }) => {
     });
   }, []);
 
-  const removeElementsOnDatabase = () => {
+  const removeElementsOnDatabase = () => { // Eliminar registros de la base de datos.
     db.transaction( (txn) => {
       txn.executeSql('DELETE FROM cars', []);
     });

@@ -29,7 +29,7 @@ const UpdateCar = ({ navigation }) => {
       return;
     }
 
-    db.transaction((tx) => {
+    db.transaction((tx) => { // Seleccionar el registro en tabla 'Cars' que tenga la matrícula que ingresamos.
       tx.executeSql(
         "SELECT * FROM cars WHERE matricula = ?",
         [matriculaSearch],
@@ -55,7 +55,7 @@ const UpdateCar = ({ navigation }) => {
       return;
     }
 
-    db.transaction((tx) => {
+    db.transaction((tx) => { // Actualizamos el registro con los datos ingresados.
       tx.executeSql(
         "UPDATE cars SET matricula = ?, marca = ?, color = ?, motorserial = ? WHERE matricula = ?",
         [matricula, marca, color, motorserial, matriculaSearch],

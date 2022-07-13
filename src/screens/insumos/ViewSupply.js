@@ -20,7 +20,7 @@ const ViewSupply = ({ navigation }) => {
   const [tratamientoSearch, setTratamientoSearch] = useState("");
   const [SupplyData, setSupplyData] = useState(null);
 
-  // generar funcion para obtener datos del usuario
+  // Generar funcion para obtener datos del insumo.
   const getSupplyData = () => {
     console.log("getSupplyData");
     setSupplyData({});
@@ -30,7 +30,7 @@ const ViewSupply = ({ navigation }) => {
       return;
     }
 
-    db.transaction((tx) => {
+    db.transaction((tx) => { // Seleccionamos el registro que coincida con el nombre e id de tratamiento ingresados.
       tx.executeSql(
         `SELECT * FROM supplies WHERE nombre = ? AND tratamiento_id = ?`,
         [nombreSearch, tratamientoSearch],

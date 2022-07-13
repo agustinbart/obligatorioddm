@@ -9,12 +9,12 @@ const db = DatabaseConnection.getConnection();
 const DropDownMatriculas = (props) => {
   const [cars, setCars] = useState([]);
 
-  // ejecutar cuando la vista se cree
+  // Ejecutar cuando la vista se cree
   useEffect(() => {
     db.transaction((tx) => {
-      tx.executeSql(`SELECT * FROM cars`, [], (tx, results) => {
+      tx.executeSql(`SELECT * FROM cars`, [], (tx, results) => { // Seleccionamos todos los datos de la tabla 'cars'.
         console.log("results", results);
-        // validar resultado
+        // Validar resultado
         if (results.rows.length > 0) {
           var temp = [];
           for (let i = 0; i < results.rows.length; ++i)
@@ -41,7 +41,7 @@ const DropDownMatriculas = (props) => {
     <SafeAreaView style={styles.container}>
         <View>
             <SelectDropdown
-                data={cars.map(car => car.matricula)}
+                data={cars.map(car => car.matricula)} // Filtramos el array 'cars' para que solo queden las matrículas.
                 onSelect={props.onSelect}
                 defaultButtonText={props.defaultButtonText}
                 buttonStyle={styles.select}

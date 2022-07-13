@@ -22,7 +22,7 @@ const RegisterTreatment = ({ navigation }) => {
   const [fecha_fin, setFechaFin] = useState('');
   const [costo, setCosto] = useState('');
 
-  const fechaRegex = /\b[0-9]{2}-[0-9]{2}-[0-9]{4}\b/;
+  const fechaRegex = /\b[0-9]{2}-[0-9]{2}-[0-9]{4}\b/; // Formato de fecha.
 
   const clearData = () => {
     setTratamientoId("");
@@ -52,12 +52,12 @@ const RegisterTreatment = ({ navigation }) => {
       return;
     }
 
-    if (!fechaRegex.test(fecha_inicio)) {
+    if (!fechaRegex.test(fecha_inicio)) { // Testeamos que lo ingresado en el campo 'Fecha de Inicio' coincida con el formato dado.
       Alert.alert("Fecha de inicio inválida");
       return;
     }
 
-    if (!fechaRegex.test(fecha_fin)) {
+    if (!fechaRegex.test(fecha_fin)) { // Testeamos que lo ingresado en el campo 'Fecha de Fin' coincida con el formato dado.
       Alert.alert("Fecha de fin inválida");
       return;
     }
@@ -117,8 +117,8 @@ const RegisterTreatment = ({ navigation }) => {
               />
 
               <DropDownMatriculas
-              onSelect={setAuto}
-              defaultButtonText={"Matrícula"} />
+                onSelect={setAuto}
+                defaultButtonText={"Matrícula"} />
 
               <MyInputText
                 placeholder="Fecha de inicio (Ej. 01-01-2022)"

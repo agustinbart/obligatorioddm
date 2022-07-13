@@ -5,10 +5,10 @@ import MyText from "../../components/Text";
 import DatabaseConnection from "../../database/database-connection";
 const db = DatabaseConnection.getConnection();
 
-const ViewAllTreatments = ({navigation}) => {
+const ViewAllTreatments = ({ navigation }) => {
   const [tratamientos, setTratamientos] = useState([]);
 
-  // ejecutar cuando la vista se cree
+  // Ejecutar cuando la vista se cree
   useEffect(() => {
     db.transaction((tx) => {
       tx.executeSql(`SELECT * FROM treatments`, [], (tx, results) => {
@@ -36,29 +36,29 @@ const ViewAllTreatments = ({navigation}) => {
     })
   }, []);
 
-  const listItemView = (item) => {
+  const listItemView = (item) => { // Lista de elementos a mostrar.
     return (
       <View key={item.id} style={styles.listItemView}>
-        <MyText text={item.tratamiento_id} style={styles.text}/>
-        <MyText text={item.nombre} style={styles.text}/>
-        <MyText text={item.auto} style={styles.text}/>
-        <MyText text={item.fecha_inicio} style={styles.text}/>
-        <MyText text={item.fecha_fin} style={styles.text}/>
-        <MyText text={item.costo} style={styles.text}/>
+        <MyText text={item.tratamiento_id} style={styles.text} />
+        <MyText text={item.nombre} style={styles.text} />
+        <MyText text={item.auto} style={styles.text} />
+        <MyText text={item.fecha_inicio} style={styles.text} />
+        <MyText text={item.fecha_fin} style={styles.text} />
+        <MyText text={item.costo} style={styles.text} />
       </View>
     );
   };
 
   return (
     <SafeAreaView style={styles.container}>
-        <View>
-          <FlatList
-            contentContainerStyle={{ paddingHorizontal: 20 }}
-            data={tratamientos}
-            key={(index) => index.toString()}
-            renderItem={({ item }) => listItemView(item)}
-          />
-        </View>
+      <View>
+        <FlatList
+          contentContainerStyle={{ paddingHorizontal: 20 }}
+          data={tratamientos}
+          key={(index) => index.toString()}
+          renderItem={({ item }) => listItemView(item)}
+        />
+      </View>
     </SafeAreaView>
   );
 };

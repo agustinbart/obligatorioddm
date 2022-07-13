@@ -8,7 +8,7 @@ const db = DatabaseConnection.getConnection();
 const ReplacementHomeScreen = ({ navigation }) => {
 
   useEffect(() => {
-    db.transaction( (txn) => {
+    db.transaction( (txn) => { // Creamos la tabla 'replacements' en la base de datos.
       txn.executeSql(
         "SELECT name FROM sqlite_master WHERE type='table' AND name='replacements'",
         [],
@@ -26,7 +26,7 @@ const ReplacementHomeScreen = ({ navigation }) => {
     });
   }, []);
 
-  const removeElementsOnDatabase = () => {
+  const removeElementsOnDatabase = () => { // Eliminar registros de la tabla en la base de datos.
     db.transaction( (txn) => {
       txn.executeSql('DELETE FROM replacements', []);
     });

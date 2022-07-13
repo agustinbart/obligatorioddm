@@ -27,7 +27,7 @@ const RegisterSupply = ({ navigation }) => {
 
   const registerSupply = () => {
     console.log("states", nombre, cantidad, tratamientoId);
-    // validaciones estados
+    // Validaciones estados
     debugger;
     if (!nombre.trim()) {
       Alert.alert("Ingrese nombre");
@@ -44,14 +44,14 @@ const RegisterSupply = ({ navigation }) => {
       return;
     }
 
-    // guardar los datos
+    // Guardar los datos
     db.transaction((tx) => {
       tx.executeSql(
         `INSERT INTO supplies(nombre, cantidad, tratamiento_id) VALUES (?, ?, ?)`,
         [nombre, cantidad, tratamientoId],
         (tx, results) => {
           console.log("results", results);
-          // validar resultado
+          // Validar resultado
           if (results.rowsAffected > 0) {
             clearData();
             Alert.alert(

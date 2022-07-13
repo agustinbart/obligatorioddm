@@ -7,7 +7,6 @@ import {
   KeyboardAvoidingView,
   ScrollView,
 } from "react-native";
-import MyInputText from "../../components/InputText";
 import MySingleButton from "../../components/SingleButton";
 import MyText from "../../components/Text";
 import DropDownTreatmentsNA from "./GetTreatmentsNoAsignados";
@@ -20,13 +19,13 @@ const DeleteTreatment = ({ navigation }) => {
 
   const deleteTreatment = () => {
     console.log("deleteTreatment");
-    db.transaction((tx) => {
+    db.transaction((tx) => { // Borramos el registro que coincida con el id de tratamiento ingresado.
       tx.executeSql(
         `DELETE FROM treatments WHERE tratamiento_id = ?`,
         [tratamiento_id],
         (tx, results) => {
           console.log("results", results);
-          // validar resultado
+          // Validar resultado
           if (results.rowsAffected > 0) {
             Alert.alert("Tratamiento eliminado");
             navigation.navigate("TreatmentHomeScreen");
@@ -42,15 +41,19 @@ const DeleteTreatment = ({ navigation }) => {
       <View style={styles.viewContainer}>
         <View style={styles.generalView}>
           <ScrollView>
-          <MyText text="Busqueda de tratamiento" style={styles.text}/>
+            <MyText text="Busqueda de tratamiento" style={styles.text} />
             <KeyboardAvoidingView style={styles.keyboardView}>
-            <DropDownTreatmentsNA
-              onSelect={setTratamientoId}
-              defaultButtonText={"Tratamiento"}
+
+              <DropDownTreatmentsNA
+                onSelect={setTratamientoId}
+                defaultButtonText={"Tratamiento"}
               />
-          <MyText style={styles.text} text="*Los tratamientos que no aparecen es porque tiene asignados repuestos y/o insumos*"/>
-          <MySingleButton title="Borrar Tratamiento" customPress={deleteTreatment} />
-          </KeyboardAvoidingView>
+
+              <MyText style={styles.text} text="*Los tratamientos que no aparecen es porque tiene asignados repuestos y/o insumos*" />
+
+              <MySingleButton title="Borrar Tratamiento" customPress={deleteTreatment} />
+
+            </KeyboardAvoidingView>
           </ScrollView>
         </View>
       </View>

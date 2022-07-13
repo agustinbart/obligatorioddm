@@ -35,7 +35,7 @@ const UpdateSupply = ({navigation}) => {
         return;
       }
 
-    db.transaction((tx) => {
+    db.transaction((tx) => { // Seleccionamos el registro que tenga el nombre e id de tratamiento ingresados.
       tx.executeSql(
         "SELECT * FROM supplies WHERE nombre = ? AND tratamiento_id = ?",
         [nombreSearch, tratamientoSearch],
@@ -59,7 +59,7 @@ const UpdateSupply = ({navigation}) => {
       return;
     }
 
-    db.transaction((tx) => {
+    db.transaction((tx) => { // Actualizamos el registro que coincida con el nombre e id de tratamiento ingresados.
       tx.executeSql(
         "UPDATE supplies SET nombre = ?, cantidad = ?, tratamiento_id = ? WHERE nombre = ? AND tratamiento_id = ?",
         [nombre, cantidad, tratamientoId, nombreSearch, tratamientoSearch],

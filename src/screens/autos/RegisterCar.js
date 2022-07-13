@@ -28,7 +28,7 @@ const RegisterCar = ({ navigation }) => {
 
   const registerCar = () => {
     console.log("states", matricula, marca, color, motorserial);
-    // validaciones estados
+    // Validaciones estados
     debugger;
     if (!matricula.trim()) {
       Alert.alert("Ingrese matricula");
@@ -50,14 +50,14 @@ const RegisterCar = ({ navigation }) => {
         return;
       }
 
-    // guardar los datos
+    // Guardar los datos
     db.transaction((tx) => {
       tx.executeSql(
         `INSERT INTO cars (matricula, marca, color, motorserial) VALUES (?, ?, ?, ?)`,
         [matricula, marca, color, motorserial],
         (tx, results) => {
           console.log("results", results);
-          // validar resultado
+          // Validar resultado
           if (results.rowsAffected > 0) {
             clearData();
             Alert.alert(

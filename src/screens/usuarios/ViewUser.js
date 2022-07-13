@@ -18,7 +18,7 @@ const ViewUser = ({ navigation }) => {
   const [cedula, setCedula] = useState("");
   const [userData, setUserData] = useState(null);
 
-  // generar funcion para obtener datos del usuario
+  // Generar funcion para obtener datos del usuario
   const getUserData = () => {
     console.log("getUserData");
     setUserData({});
@@ -29,7 +29,7 @@ const ViewUser = ({ navigation }) => {
     }
 
     db.transaction((tx) => {
-      tx.executeSql(
+      tx.executeSql( // Seleccionamos el registro que coincida con la cédula ingresada.
         `SELECT * FROM users WHERE cedula = ?`,
         [cedula],
         (tx, results) => {
@@ -51,7 +51,8 @@ const ViewUser = ({ navigation }) => {
         <View style={styles.generalView}>
           <ScrollView>
             <KeyboardAvoidingView style={styles.keyboardView}>
-              <MyText text="Filtro de usuario" style={styles.text}/>
+
+              <MyText text="Filtro de usuario" style={styles.text} />
               <MyInputText
                 style={styles.inputStyle}
                 keyboardType="number-pad"
@@ -59,9 +60,11 @@ const ViewUser = ({ navigation }) => {
                 onChangeText={(text) => setCedula(text)}
               />
               <MySingleButton title="Buscar" customPress={getUserData} />
+
               <View style={styles.presenterView}>
-                <MyText text={`${!userData ? '' : userData.nombre}`} style={styles.presenterText}/>
+                <MyText text={`${!userData ? '' : userData.nombre}`} style={styles.presenterText} />
               </View>
+
             </KeyboardAvoidingView>
           </ScrollView>
         </View>
@@ -94,13 +97,13 @@ const styles = StyleSheet.create({
     color: "black",
   },
   presenterView: {
-    flex:2,
+    flex: 2,
     marginLeft: 30,
     marginRight: 30,
     marginTop: 15,
     fontSize: 30,
   },
   presenterText: {
-    fontSize:20
+    fontSize: 20
   }
 });

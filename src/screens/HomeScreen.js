@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { StyleSheet, View, SafeAreaView, ScrollView, Alert } from "react-native";
 import MyButton from "../components/Button";
 
@@ -54,7 +54,7 @@ const HomeScreen = ({ navigation }) => {
                 btnIcon="clipboard-list"
                 customPress={() => navigation.navigate("Consulta1")}
               />
-              
+
             </ScrollView>
           </View>
         </View>

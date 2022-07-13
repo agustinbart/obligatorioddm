@@ -18,7 +18,7 @@ const ViewCar = ({ navigation }) => {
   const [id, setTratamientoId] = useState("");
   const [tratamientoData, setTratamientoData] = useState(null);
 
-  // generar funcion para obtener datos del usuario
+  // Generar funcion para obtener datos del usuario
   const getTratamientoData = () => {
     console.log("getTratamientoData");
     setTratamientoData({});
@@ -29,7 +29,7 @@ const ViewCar = ({ navigation }) => {
     }
 
     db.transaction((tx) => {
-      tx.executeSql(
+      tx.executeSql( // Seleccionamos el registro que coincida con el id de tratamiento ingresado.
         `SELECT * FROM treatments WHERE tratamiento_id = ?`,
         [id],
         (tx, results) => {
@@ -51,16 +51,21 @@ const ViewCar = ({ navigation }) => {
         <View style={styles.generalView}>
           <ScrollView>
             <KeyboardAvoidingView style={styles.keyboardView}>
-              <MyText text="Filtro de tratamiento" style={styles.text}/>
+
+              <MyText text="Filtro de tratamiento" style={styles.text} />
+
               <MyInputText
                 style={styles.inputStyle}
                 placeholder="Ingrese el id Ej. T-1234"
                 onChangeText={(text) => setTratamientoId(text)}
               />
+
               <MySingleButton title="Buscar" customPress={getTratamientoData} />
+
               <View style={styles.presenterView}>
-                <MyText text={`${!tratamientoData ? '' : tratamientoData.nombre}`} style={styles.presenterText}/>
+                <MyText text={`${!tratamientoData ? '' : tratamientoData.nombre}`} style={styles.presenterText} />
               </View>
+
             </KeyboardAvoidingView>
           </ScrollView>
         </View>
@@ -93,13 +98,13 @@ const styles = StyleSheet.create({
     color: "black",
   },
   presenterView: {
-    flex:2,
+    flex: 2,
     marginLeft: 30,
     marginRight: 30,
     marginTop: 15,
     fontSize: 30,
   },
   presenterText: {
-    fontSize:20
+    fontSize: 20
   }
 });

@@ -7,8 +7,9 @@ const db = DatabaseConnection.getConnection();
 
 const SupplyHomeScreen = ({ navigation }) => {
 
+  // Ejecutar cuando la vista se cree
   useEffect(() => {
-    db.transaction( (txn) => {
+    db.transaction( (txn) => { // Creación de tabla 'supplies' en base de datos.
       txn.executeSql(
         "SELECT name FROM sqlite_master WHERE type='table' AND name='supplies'",
         [],
