@@ -12,19 +12,19 @@ const HomeScreen = ({ navigation }) => {
         <View style={styles.generalView}>
           <View style={styles.generalView}>
             <ScrollView>
+            
+             <MyButton
+                title="Autos"
+                btnColor="#44BBA4"
+                btnIcon="car"
+                customPress={() => navigation.navigate("CarHomeScreen")}
+              />
 
               <MyButton
                 title="Usuarios"
                 btnColor="#44BBA4"
                 btnIcon="user-plus"
                 customPress={() => navigation.navigate("UserHomeScreen")}
-              />
-
-              <MyButton
-                title="Autos"
-                btnColor="#44BBA4"
-                btnIcon="car"
-                customPress={() => navigation.navigate("CarHomeScreen")}
               />
 
               <MyButton
