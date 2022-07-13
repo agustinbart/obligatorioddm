@@ -22,7 +22,7 @@ const DropDownMatriculasNA = (props) => {
             } else {
               Alert.alert(
                 "Mensaje",
-                "No hay usuarios!!!",
+                "No hay autos!!!",
                 [
                   {
                     text: "Ok"
