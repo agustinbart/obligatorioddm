@@ -25,8 +25,7 @@ const DropDownMatriculasNA = (props) => {
                 "No hay usuarios!!!",
                 [
                   {
-                    text: "Ok",
-                    onPress: () => navigation.navigate("UserHomeScreen"),
+                    text: "Ok"
                   },
                 ],
                 { cancelable: false }
